@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG 1.2.2 Captions Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <span class="navbar-brand">A11y Captions Demo</span>
+  </div>
+</nav>
+
+<main class="container my-5">
+  <h1>Video Captions Demonstration</h1>
+  <p class="lead">This page demonstrates WCAG 2.1 Success Criterion 1.2.2 Captions (Prerecorded) Level A compliance.</p>
+
+  <div>
+    <ul>
+      <li><b>Goal</b>: Videos can be played with captions.</li>
+      <li><b>What to do</b>: Provide synchronized text for audio content in existing videos.</li>
+      <li><b>Why it's important</b>: People who are deaf or hard of hearing can understand audio in videos.</li>
+    </ul>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h4">Example: Video with Captions</h2>
+
+          <div class="video-section my-4">
+            <video controls class="img-fluid">
+              <source src="media/140111-774507949_tiny.mp4" type="video/mp4">
+              <track src="media/subtitles-en.vtt" kind="subtitles" srclang="en" label="English">
+              <track src="media/subtitles-pt.vtt" kind="subtitles" srclang="pt" label="Português">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p>
+            <small>Vídeo from
+              <a href="https://pixabay.com/pt/users/mohammedksm-30639570">MOHAMMED KASMI</a> @ <a href="https://pixabay.com/pt/">Pixabay</a>
+            </small>
+          </p>
+          <div class="alert alert-info">
+            <h3 class="h5">Why Captions Matter:</h3>
+            <ul class="mb-0">
+              <li>Essential for deaf or hard-of-hearing users</li>
+              <li>Helpful in noisy environments</li>
+              <li>Beneficial for non-native language speakers</li>
+              <li>Aids in comprehension and retention</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h4">WCAG 1.2.2 Requirements</h2>
+          <p>Success Criterion 1.2.2 requires:</p>
+          <ul>
+            <li>Captions are provided for all prerecorded audio content</li>
+            <li>Captions must be synchronized with the media</li>
+            <li>Captions include speaker identification when needed</li>
+            <li>Captions include important non-speech sounds</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="card-body">
+          <h3 class="card-title h4">Implementation Notes</h3>
+          <p>This example uses the HTML5 <code>&lt;track&gt;</code> element with WebVTT captions. The captions are:</p>
+          <ul>
+            <li>Synchronized with the video</li>
+            <li>Accurate and complete</li>
+            <li>Properly formatted</li>
+            <li>Include speaker identification</li>
+            <li>Include important sound effects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-light py-3 mt-5">
+  <div class="container">
+    <p class="text-muted mb-0">Demo created to illustrate WCAG 2.1 Success Criterion 1.2.2 compliance</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

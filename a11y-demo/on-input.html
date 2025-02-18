@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - On Input (WCAG 3.2.2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .comparison-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .live-region {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+
+        .form-preview {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .warning-text {
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+
+        .context-change-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffecb5;
+            border-radius: 4px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .settings-panel {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-panel {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="on-input.html">On Input</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 3.2.2 On Input (Level A)</h1>
+        <p class="lead">This page demonstrates how to handle user input changes without unexpected context changes.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Content can be operated more predictably.</li>
+                <li><b>What to do</b>: Forewarn users if their context will change based on their input.</li>
+                <li><b>Why it's important</b>: Content that behaves predictably is especially important to people with disabilities.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="bad-example">
+            <h2 id="bad-example">Poor Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Automatic Form Submission</h3>
+                <form id="badForm">
+                    <div class="mb-3">
+                        <label for="badSelect" class="form-label">Select a Category</label>
+                        <select class="form-control" id="badSelect">
+                            <option value="">Choose...</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
+                        </select>
+                    </div>
+                </form>
+
+                <div class="alert alert-danger mt-3">
+                    <strong>Why this fails:</strong>
+                    <ul class="mb-0">
+                        <li>Form submits automatically when option is selected</li>
+                        <li>No warning about context change</li>
+                        <li>User loses control of the interaction</li>
+                        <li>Unexpected page reload</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Automatic Language Switch</h3>
+                <div class="mb-3">
+                    <label for="badLanguage" class="form-label">Select Language</label>
+                    <select class="form-control" id="badLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+
+                <div class="alert alert-danger mt-3">
+                    <ul class="mb-0">
+                        <li>Page language changes immediately</li>
+                        <li>No confirmation dialog</li>
+                        <li>Content changes without warning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-example">
+            <h2 id="good-example">Good Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Settings with Preview</h3>
+                <div class="context-change-warning">
+                    <strong>Note:</strong> Changes will be previewed below. Click "Apply Changes" to update the settings.
+                </div>
+
+                <form id="goodForm">
+                    <div class="settings-panel">
+                        <div class="mb-3">
+                            <label for="fontSize" class="form-label">Font Size</label>
+                            <select class="form-control" id="fontSize">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="theme" class="form-label">Color Theme</label>
+                            <select class="form-control" id="theme">
+                                <option value="light" selected>Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="high-contrast">High Contrast</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="language" class="form-label">Language</label>
+                            <select class="form-control" id="language">
+                                <option value="en" selected>English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                            </select>
+                            <div class="form-text">
+                                Changing language will require confirmation and page reload
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Apply Changes</button>
+                    </div>
+
+                    <div class="preview-panel">
+                        <h4>Preview</h4>
+                        <p id="previewText">
+                            This is how your content will look with the selected settings.
+                            Changes are shown here before being applied to the entire page.
+                        </p>
+                    </div>
+                </form>
+
+                <div class="alert alert-success mt-3">
+                    <strong>Why this works:</strong>
+                    <ul class="mb-0">
+                        <li>Changes are previewed before applying</li>
+                        <li>Clear warning about context changes</li>
+                        <li>Explicit action required to apply changes</li>
+                        <li>Preview updates without page reload</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Search with Auto-Complete</h3>
+                <div class="mb-3">
+                    <label for="search" class="form-label">Search Products</label>
+                    <input type="search" 
+                           class="form-control" 
+                           id="search" 
+                           aria-describedby="searchHelp"
+                           placeholder="Type to search...">
+                    <div id="searchHelp" class="form-text">
+                        Suggestions will appear below as you type
+                    </div>
+                    <div id="searchResults" class="list-group mt-2" role="listbox" aria-label="Search suggestions">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <ul class="mb-0">
+                        <li>Results update without page reload</li>
+                        <li>Clear indication of auto-update behavior</li>
+                        <li>Results are keyboard accessible</li>
+                        <li>ARIA live region for screen readers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="form-example">
+            <h2 id="form-example">Form with Multiple Steps</h2>
+            
+            <div class="comparison-card">
+                <form id="multiStepForm">
+                    <div class="context-change-warning">
+                        <strong>Note:</strong> This form has multiple steps. You will be asked to confirm before moving to the next step.
+                    </div>
+
+                    <div id="step1" class="form-step">
+                        <h3>Step 1: Personal Information</h3>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="confirmNextStep()">Next Step</button>
+                    </div>
+
+                    <div id="step2" class="form-step" style="display: none;">
+                        <h3>Step 2: Preferences</h3>
+                        <div class="mb-3">
+                            <label for="notifications" class="form-label">Notification Preferences</label>
+                            <select class="form-control" id="notifications">
+                                <option value="email">Email</option>
+                                <option value="sms">SMS</option>
+                                <option value="both">Both</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices Summary</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Warn users about context changes before they occur</li>
+                        <li class="list-group-item">Provide previews of changes when possible</li>
+                        <li class="list-group-item">Require explicit user action for significant changes</li>
+                        <li class="list-group-item">Use appropriate ARIA attributes for dynamic content</li>
+                        <li class="list-group-item">Maintain keyboard focus appropriately</li>
+                        <li class="list-group-item">Provide clear feedback about auto-updating features</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="live-region" role="status" aria-live="polite" id="liveRegion"></div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Bad example - automatic form submission (for demonstration only)
+        document.getElementById('badSelect').addEventListener('change', function() {
+            // This is an example of what not to do
+            if (this.value) {
+                document.getElementById('badForm').submit();
+            }
+        });
+
+        // Bad example - automatic language switch (for demonstration only)
+        document.getElementById('badLanguage').addEventListener('change', function() {
+            // This is an example of what not to do
+            document.documentElement.lang = this.value;
+        });
+
+        // Good example - Settings with preview
+        const fontSize = document.getElementById('fontSize');
+        const theme = document.getElementById('theme');
+        const language = document.getElementById('language');
+        const previewText = document.getElementById('previewText');
+        const liveRegion = document.getElementById('liveRegion');
+        const goodForm = document.getElementById('goodForm');
+
+        function updatePreview() {
+            // Update preview text styles
+            switch(fontSize.value) {
+                case 'small':
+                    previewText.style.fontSize = '0.875rem';
+                    break;
+                case 'medium':
+                    previewText.style.fontSize = '1rem';
+                    break;
+                case 'large':
+                    previewText.style.fontSize = '1.25rem';
+                    break;
+            }
+
+            // Update preview theme
+            switch(theme.value) {
+                case 'light':
+                    previewText.style.backgroundColor = '#ffffff';
+                    previewText.style.color = '#000000';
+                    break;
+                case 'dark':
+                    previewText.style.backgroundColor = '#343a40';
+                    previewText.style.color = '#ffffff';
+                    break;
+                case 'high-contrast':
+                    previewText.style.backgroundColor = '#000000';
+                    previewText.style.color = '#ffffff';
+                    break;
+            }
+
+            liveRegion.textContent = 'Preview updated. Review the changes before applying.';
+        }
+
+        fontSize.addEventListener('change', updatePreview);
+        theme.addEventListener('change', updatePreview);
+
+        goodForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (language.value !== document.documentElement.lang) {
+                if (confirm('Changing the language will reload the page. Do you want to continue?')) {
+                    // In a real application, this would update the language and reload
+                    liveRegion.textContent = 'Language change confirmed. Page would reload.';
+                }
+            } else {
+                liveRegion.textContent = 'Settings applied successfully!';
+            }
+        });
+
+        // Search with auto-complete
+        const search = document.getElementById('search');
+        const searchResults = document.getElementById('searchResults');
+        const sampleProducts = [
+            'Laptop', 'Desktop', 'Tablet', 'Smartphone', 'Keyboard', 'Mouse'
+        ];
+
+        search.addEventListener('input', function() {
+            // Clear previous results
+            searchResults.innerHTML = '';
+            
+            if (this.value.length > 0) {
+                // Filter products
+                const matches = sampleProducts.filter(product => 
+                    product.toLowerCase().includes(this.value.toLowerCase())
+                );
+
+                // Update results
+                matches.forEach(product => {
+                    const item = document.createElement('button');
+                    item.className = 'list-group-item list-group-item-action';
+                    item.setAttribute('role', 'option');
+                    item.textContent = product;
+                    item.addEventListener('click', function() {
+                        search.value = product;
+                        searchResults.innerHTML = '';
+                    });
+                    searchResults.appendChild(item);
+                });
+
+                liveRegion.textContent = `Found ${matches.length} matching products`;
+            }
+        });
+
+        // Multi-step form
+        function confirmNextStep() {
+            if (confirm('Are you ready to move to the next step? Make sure you have saved your information.')) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                liveRegion.textContent = 'Moved to step 2';
+            }
+        }
+
+        function previousStep() {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step1').style.display = 'block';
+            liveRegion.textContent = 'Returned to step 1';
+        }
+    </script>
+</body>
+</html>

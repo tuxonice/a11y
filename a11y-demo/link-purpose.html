@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Link Purpose (WCAG 2.4.4)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .screen-reader-text {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .example-box {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .link-purpose-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+
+        /* Bad example styles - for demonstration only */
+        .bad-link {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="link-purpose.html">Link Purpose</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 2.4.4 Link Purpose (In Context)</h1>
+        <p class="lead">This page demonstrates how to create links with clear purpose that can be understood in context.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Users understand what each link will do.</li>
+                <li><b>What to do</b>: Provide descriptive names or context for all links.</li>
+                <li><b>Why it's important</b>: People with visual and cognitive disabilities can navigate more easily.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="bad-examples">
+            <h2 id="bad-examples">Poor Link Text Examples</h2>
+            <div class="example-box">
+                <h3 class="h5">Problematic Link Text</h3>
+                <p>For more information about our services, <a href="#" class="bad-link">click here</a>.</p>
+                <p>To download our report, <a href="#" class="bad-link">here</a>.</p>
+                <p><a href="#" class="bad-link">Read more</a> about our company history.</p>
+                <p>View the full article <a href="#" class="bad-link">></a></p>
+                <div class="alert alert-danger mt-3">
+                    <strong>Why these fail:</strong>
+                    <ul class="mb-0">
+                        <li>Generic text like "click here" or "read more" doesn't describe the link's purpose</li>
+                        <li>Single characters (>) provide no context</li>
+                        <li>Screen readers may read these links out of context</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-examples">
+            <h2 id="good-examples">Good Link Text Examples</h2>
+            <div class="example-box">
+                <h3 class="h5">Descriptive Link Text</h3>
+                <p><a href="#">View our professional services overview</a></p>
+                <p><a href="#">Download 2024 Annual Report (PDF, 2.5MB)</a></p>
+                <p><a href="#">Read about our company's 25-year history</a></p>
+                <p><a href="#">Continue reading: "The Future of Web Accessibility"</a></p>
+                <div class="alert alert-success mt-3">
+                    <strong>Why these work:</strong>
+                    <ul class="mb-0">
+                        <li>Link text clearly describes the destination</li>
+                        <li>File information is included where relevant</li>
+                        <li>Context is built into the link text</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="context-examples">
+            <h2 id="context-examples">Links with Programmatic Context</h2>
+            <div class="example-box">
+                <h3 class="h5">News Articles</h3>
+                <div class="list-group">
+                    <article class="list-group-item">
+                        <h4 class="h6">Web Accessibility Guidelines Updated</h4>
+                        <p>The W3C has released new guidelines for web accessibility...</p>
+                        <a href="#" aria-labelledby="article-1-title article-1-action">
+                            <span id="article-1-title" class="screen-reader-text">Web Accessibility Guidelines Updated: </span>
+                            <span id="article-1-action">Read full article</span>
+                        </a>
+                    </article>
+                    <article class="list-group-item">
+                        <h4 class="h6">Accessibility Testing Tools</h4>
+                        <p>New tools have been released to help developers test...</p>
+                        <a href="#" aria-labelledby="article-2-title article-2-action">
+                            <span id="article-2-title" class="screen-reader-text">Accessibility Testing Tools: </span>
+                            <span id="article-2-action">Read full article</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="icon-links">
+            <h2 id="icon-links">Icon Links</h2>
+            <div class="example-box">
+                <h3 class="h5">Bad Example: Icons Without Context</h3>
+                <div class="mb-3">
+                    <a href="#" class="btn btn-link">
+                        <i class="bi bi-download"></i>
+                    </a>
+                    <a href="#" class="btn btn-link">
+                        <i class="bi bi-share"></i>
+                    </a>
+                </div>
+
+                <h3 class="h5">Good Example: Icons with Labels</h3>
+                <div class="mb-3">
+                    <a href="#" class="btn btn-link">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                        Download report
+                    </a>
+                    <a href="#" class="btn btn-link">
+                        <i class="bi bi-share" aria-hidden="true"></i>
+                        Share article
+                    </a>
+                </div>
+
+                <h3 class="h5">Good Example: Icon-only with Aria Label</h3>
+                <div>
+                    <a href="#" class="btn btn-link" aria-label="Download annual report (PDF, 3.2MB)">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="btn btn-link" aria-label="Share this article on social media">
+                        <i class="bi bi-share" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="complex-content">
+            <h2 id="complex-content">Complex Content Examples</h2>
+            <div class="example-box">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="https://placehold.co/300x200" class="card-img-top" alt="Conference presentation on web accessibility">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Accessibility Conference 2024</h3>
+                                <p class="card-text">Annual conference focusing on web accessibility...</p>
+                                <a href="#" class="btn btn-primary">
+                                    Register for Accessibility Conference 2024
+                                    <span class="screen-reader-text">, Early bird registration ends December 1st</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Link Purpose Best Practices</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Make link text descriptive and unique</li>
+                        <li class="list-group-item">Avoid generic phrases like "click here" and "read more"</li>
+                        <li class="list-group-item">Include relevant file information (type, size)</li>
+                        <li class="list-group-item">Use aria-label or aria-labelledby for complex contexts</li>
+                        <li class="list-group-item">Ensure icon links have proper text alternatives</li>
+                        <li class="list-group-item">Test links by reading them out of context</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="link-purpose-indicator">
+        Hover over links to see their full context
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

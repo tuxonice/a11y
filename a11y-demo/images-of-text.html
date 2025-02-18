@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Images of Text (WCAG 1.4.5)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .decorative-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .custom-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #2c3e50;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .comparison-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .essential-example {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin: 1rem 0;
+        }
+
+        .customizable-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .controls {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .text-customization {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .customizable-content {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="images-of-text.html">Images of Text</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 1.4.5 Images of Text (Level AA)</h1>
+        <p class="lead">This page demonstrates the proper use of text versus images of text, following WCAG 1.4.5 guidelines.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Users can adjust how text is presented.</li>
+                <li><b>What to do</b>: Use text instead of pictures of text.</li>
+                <li><b>Why it's important</b>: People cannot alter how text looks in images.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="general-principle">
+            <h2 id="general-principle">General Principle</h2>
+            <p>If the same visual presentation can be made using text alone, an image should not be used to present that text. This ensures that text remains:</p>
+            <ul class="list-group mb-4">
+                <li class="list-group-item">Customizable by users</li>
+                <li class="list-group-item">Searchable</li>
+                <li class="list-group-item">Selectable</li>
+                <li class="list-group-item">Translatable</li>
+                <li class="list-group-item">Compatible with assistive technologies</li>
+            </ul>
+        </section>
+
+        <section class="mb-5" aria-labelledby="bad-examples">
+            <h2 id="bad-examples">Poor Implementation Examples</h2>
+            
+            <div class="comparison-card">
+                <h3>Company Name as Image</h3>
+                <img src="media/company-logo.png"
+                     alt="Company Name" 
+                     class="comparison-image">
+                <div class="alert alert-danger">
+                    <strong>Why this fails:</strong>
+                    <ul class="mb-0">
+                        <li>Text cannot be customized by users</li>
+                        <li>Content is not searchable</li>
+                        <li>Requires additional bandwidth</li>
+                        <li>May appear pixelated when scaled</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Quote as Image</h3>
+                <img src="media/sample-quote.png"
+                     alt="Success is not final, failure is not fatal: it is the courage to continue that counts" 
+                     class="comparison-image">
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        <li>Text cannot be selected or copied</li>
+                        <li>Cannot be translated</li>
+                        <li>Font size cannot be adjusted</li>
+                        <li>Poor accessibility for screen readers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-examples">
+            <h2 id="good-examples">Good Implementation Examples</h2>
+
+            <div class="comparison-card">
+                <h3>Styled Text Instead of Image</h3>
+                <div class="logo-text">Company Name</div>
+                <div class="alert alert-success">
+                    <strong>Why this works:</strong>
+                    <ul class="mb-0">
+                        <li>Uses CSS for styling</li>
+                        <li>Text remains selectable</li>
+                        <li>Can be read by screen readers</li>
+                        <li>Scales perfectly at any size</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Styled Quote</h3>
+                <blockquote class="custom-quote">
+                    "Success is not final, failure is not fatal: it is the courage to continue that counts"
+                    <footer class="blockquote-footer mt-2">Winston Churchill</footer>
+                </blockquote>
+                <div class="alert alert-success">
+                    <ul class="mb-0">
+                        <li>Fully accessible text</li>
+                        <li>Can be selected and copied</li>
+                        <li>Proper semantic markup</li>
+                        <li>Maintains visual appeal</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="exceptions">
+            <h2 id="exceptions">Essential Exceptions</h2>
+            
+            <div class="essential-example">
+                <h3>Logotypes</h3>
+                <p>Brand logos with specific text styling are considered essential and are exempt from this requirement:</p>
+                <img src="media/brand-logo.png"
+                     alt="Company Brand Logo" 
+                     class="mb-3">
+                <div class="alert alert-info">
+                    <strong>Why this is allowed:</strong>
+                    <ul class="mb-0">
+                        <li>Part of brand identity</li>
+                        <li>Specific visual representation required</li>
+                        <li>Legal or trademark requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="essential-example">
+                <h3>Signatures</h3>
+                <p>Digital signatures or handwritten content may be presented as images:</p>
+                <img src="media/signature.svg"
+                     alt="John Doe's Signature"
+                     width="200px"
+                     class="mb-3">
+                <div class="alert alert-info">
+                    <ul class="mb-0">
+                        <li>Represents authentic handwriting</li>
+                        <li>Cannot be replicated with text alone</li>
+                        <li>Serves as verification</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="customizable">
+            <h2 id="customizable">Customizable Text Example</h2>
+            
+            <div class="text-customization">
+                <h3>Interactive Text Customization</h3>
+                <div class="controls">
+                    <label for="fontSize" class="form-label">Font Size:</label>
+                    <input type="range" class="form-range" id="fontSize" min="12" max="32" value="16">
+                    
+                    <label for="lineHeight" class="form-label mt-3">Line Height:</label>
+                    <input type="range" class="form-range" id="lineHeight" min="1" max="2" step="0.1" value="1.5">
+                    
+                    <label for="textColor" class="form-label mt-3">Text Color:</label>
+                    <input type="color" class="form-control form-control-color" id="textColor" value="#000000">
+                </div>
+                
+                <div class="customizable-content" id="customizableText">
+                    <p>This is an example of customizable text that allows users to adjust various properties to meet their needs. 
+                    Unlike images of text, this content can be modified to improve readability and accessibility.</p>
+                    <p>Try adjusting the controls above to see how the text can be customized to your preferences.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices Summary</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Use actual text with CSS styling instead of images of text</li>
+                        <li class="list-group-item">Reserve images of text for logos and essential cases only</li>
+                        <li class="list-group-item">Ensure text remains customizable for user preferences</li>
+                        <li class="list-group-item">Consider responsive design implications</li>
+                        <li class="list-group-item">Test with different font sizes and screen sizes</li>
+                        <li class="list-group-item">Provide proper alt text when images of text are necessary</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Text Customization Controls
+        const fontSizeInput = document.getElementById('fontSize');
+        const lineHeightInput = document.getElementById('lineHeight');
+        const textColorInput = document.getElementById('textColor');
+        const customizableText = document.getElementById('customizableText');
+
+        function updateTextStyles() {
+            customizableText.style.fontSize = `${fontSizeInput.value}px`;
+            customizableText.style.lineHeight = lineHeightInput.value;
+            customizableText.style.color = textColorInput.value;
+        }
+
+        fontSizeInput.addEventListener('input', updateTextStyles);
+        lineHeightInput.addEventListener('input', updateTextStyles);
+        textColorInput.addEventListener('input', updateTextStyles);
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - No Keyboard Trap (WCAG 2.1.2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .modal-trap {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal-trap.show {
+            display: block;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .focus-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+
+        /* Ensure focus is always visible */
+        *:focus {
+            outline: 3px solid #007bff !important;
+            outline-offset: 2px !important;
+        }
+
+        .keyboard-navigation-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            max-width: 300px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="no-keyboard-trap.html">No Keyboard Trap</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="keyboard-navigation-info" role="status" aria-live="polite">
+        <h2 class="h6 mb-2">Keyboard Navigation</h2>
+        <p class="mb-0">Currently focused element: <span id="focused-element">None</span></p>
+    </div>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 2.1.2 No Keyboard Trap (Level A)</h1>
+        <p class="lead">This page demonstrates how to handle keyboard focus properly and avoid keyboard traps.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Keyboard users don't get stuck.</li>
+                <li><b>What to do</b>: Ensure users always know how to navigate away from components.</li>
+                <li><b>Why it's important</b>: People who rely on the keyboard often have no other means to navigate.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="good-modal">
+            <h2 id="good-modal">Accessible Modal Example</h2>
+            <p>This modal demonstrates proper keyboard handling:</p>
+            <button class="btn btn-primary" id="openGoodModal">Open Accessible Modal</button>
+
+            <div id="goodModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="goodModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="goodModalLabel">Accessible Modal</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>This modal:</p>
+                            <ul>
+                                <li>Traps focus within the modal while open</li>
+                                <li>Returns focus to the trigger button when closed</li>
+                                <li>Can be closed with ESC key</li>
+                                <li>Has proper ARIA labels</li>
+                            </ul>
+                            <div class="mb-3">
+                                <label for="modalInput" class="form-label">Sample Input</label>
+                                <input type="text" class="form-control" id="modalInput">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="bad-example">
+            <h2 id="bad-example">Bad Example (For Demonstration Only)</h2>
+            <p>This example shows a problematic implementation that creates a keyboard trap:</p>
+            <button class="btn btn-danger" id="showBadExample">Show Bad Example</button>
+
+            <div id="badModal" class="modal-trap">
+                <h3>Problematic Modal</h3>
+                <p>This modal demonstrates what NOT to do:</p>
+                <ul>
+                    <li>No way to close with keyboard</li>
+                    <li>Focus is trapped without proper management</li>
+                    <li>Missing ARIA attributes</li>
+                </ul>
+                <button onclick="alert('Trapped!')">Trapped Button</button>
+                <!-- Intentionally missing close button for demonstration -->
+            </div>
+            <div id="badOverlay" class="overlay"></div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="custom-widget">
+            <h2 id="custom-widget">Custom Widget with Proper Keyboard Support</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title h5">Interactive Widget</h3>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-primary">Option 1</button>
+                        <button type="button" class="btn btn-outline-primary">Option 2</button>
+                        <button type="button" class="btn btn-outline-primary">Option 3</button>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" id="customCheck">
+                        <label class="form-check-label" for="customCheck">
+                            Toggle feature
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices for Avoiding Keyboard Traps</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Always provide a way to exit modals using the keyboard (ESC key)</li>
+                        <li class="list-group-item">Ensure all interactive elements can be reached using Tab key</li>
+                        <li class="list-group-item">Return focus to the triggering element when closing dialogs</li>
+                        <li class="list-group-item">Maintain a logical tab order that matches visual layout</li>
+                        <li class="list-group-item">Test your interface using only a keyboard</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="focus-indicator" role="status" aria-live="polite">
+        Press Tab to navigate, ESC to close modals
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Track focused element
+        document.addEventListener('focusin', function(e) {
+            const element = e.target;
+            let elementDescription = element.tagName.toLowerCase();
+            if (element.id) {
+                elementDescription += ` #${element.id}`;
+            } else if (element.className) {
+                elementDescription += ` .${element.className.split(' ')[0]}`;
+            }
+            document.getElementById('focused-element').textContent = elementDescription;
+        });
+
+        // Initialize Bootstrap modal
+        const goodModal = new bootstrap.Modal(document.getElementById('goodModal'));
+        document.getElementById('openGoodModal').addEventListener('click', () => goodModal.show());
+
+        // Bad example demonstration
+        document.getElementById('showBadExample').addEventListener('click', function() {
+            document.getElementById('badModal').classList.add('show');
+            document.getElementById('badOverlay').classList.add('show');
+        });
+
+        // Allow ESC key to close bad example (for safety)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('badModal').classList.remove('show');
+                document.getElementById('badOverlay').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

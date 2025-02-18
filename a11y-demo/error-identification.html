@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Error Identification (WCAG 3.3.1)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .error-summary {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .error-summary.show {
+            display: block;
+        }
+
+        .form-control.error {
+            border-color: #dc3545;
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+
+        .form-control.valid {
+            border-color: #198754;
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+
+        .invalid-feedback {
+            display: none;
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+
+        .form-control.error ~ .invalid-feedback {
+            display: block;
+        }
+
+        .comparison-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .live-region {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="error-identification.html">Error Identification</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 3.3.1 Error Identification</h1>
+        <p class="lead">This page demonstrates how to properly identify and communicate form errors to users, including those using assistive technologies.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Users know an error exists and what is wrong.</li>
+                <li><b>What to do</b>: Provide descriptive notification of errors.</li>
+                <li><b>Why it's important</b>: Flagging errors helps people with reduced sight and cognitive disabilities resolve them.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="bad-example">
+            <h2 id="bad-example">Poor Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Registration Form - Poor Error Handling</h3>
+                <form id="badForm" novalidate>
+                    <div class="mb-3">
+                        <label for="badEmail">Email</label>
+                        <input type="email" class="form-control" id="badEmail" name="email">
+                        <div style="color: red;">Invalid email!</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="badPassword">Password</label>
+                        <input type="password" class="form-control" id="badPassword" name="password">
+                        <div style="color: red;">Too short!</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <div class="alert alert-danger mt-3">
+                    <strong>Why this fails:</strong>
+                    <ul class="mb-0">
+                        <li>Error messages are always visible</li>
+                        <li>No programmatic association between errors and fields</li>
+                        <li>No error summary</li>
+                        <li>Unclear error messages</li>
+                        <li>No ARIA attributes for screen readers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-example">
+            <h2 id="good-example">Good Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Registration Form - Proper Error Handling</h3>
+
+                <div class="error-summary alert alert-danger" role="alert" id="errorSummary">
+                    <h4>Please correct the following errors:</h4>
+                    <ul id="errorList"></ul>
+                </div>
+
+                <form id="goodForm" novalidate>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="firstName" 
+                               name="firstName"
+                               aria-describedby="firstNameError"
+                               required
+                               minlength="2">
+                        <div class="invalid-feedback" id="firstNameError">
+                            Please enter your first name (minimum 2 characters)
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" 
+                               class="form-control" 
+                               id="email" 
+                               name="email"
+                               aria-describedby="emailError"
+                               required>
+                        <div class="invalid-feedback" id="emailError">
+                            Please enter a valid email address (e.g., user@example.com)
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="password" 
+                               name="password"
+                               aria-describedby="passwordError"
+                               required
+                               minlength="8"
+                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                        <div class="invalid-feedback" id="passwordError">
+                            Password must be at least 8 characters long and contain both letters and numbers
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="confirmPassword" 
+                               name="confirmPassword"
+                               aria-describedby="confirmPasswordError"
+                               required>
+                        <div class="invalid-feedback" id="confirmPasswordError">
+                            Passwords do not match
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number (Optional)</label>
+                        <input type="tel" 
+                               class="form-control" 
+                               id="phone" 
+                               name="phone"
+                               aria-describedby="phoneError"
+                               pattern="^\+?[\d\s-]{10,}$">
+                        <div class="invalid-feedback" id="phoneError">
+                            Please enter a valid phone number
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" 
+                                   class="form-check-input" 
+                                   id="terms" 
+                                   name="terms"
+                                   aria-describedby="termsError"
+                                   required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the Terms and Conditions
+                            </label>
+                            <div class="invalid-feedback" id="termsError">
+                                You must agree to the Terms and Conditions
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+                <div class="alert alert-success mt-3">
+                    <strong>Why this works:</strong>
+                    <ul class="mb-0">
+                        <li>Clear, specific error messages</li>
+                        <li>Errors are associated with form controls using aria-describedby</li>
+                        <li>Error summary for screen readers</li>
+                        <li>Real-time validation feedback</li>
+                        <li>Visual and programmatic indication of errors</li>
+                        <li>Clear instructions for correction</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="real-time">
+            <h2 id="real-time">Real-time Validation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Username Availability Check</h3>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" 
+                           class="form-control" 
+                           id="username" 
+                           name="username"
+                           aria-describedby="usernameError usernameHelp"
+                           required
+                           minlength="3">
+                    <div id="usernameHelp" class="form-text">
+                        Enter a username (minimum 3 characters)
+                    </div>
+                    <div class="invalid-feedback" id="usernameError"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices Summary</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Provide clear, specific error messages</li>
+                        <li class="list-group-item">Associate error messages with form controls</li>
+                        <li class="list-group-item">Use appropriate ARIA attributes</li>
+                        <li class="list-group-item">Provide error summary for multiple errors</li>
+                        <li class="list-group-item">Include suggestions for correction</li>
+                        <li class="list-group-item">Use both visual and programmatic error indicators</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="live-region" role="status" aria-live="polite" id="liveRegion">
+        Interact with the forms to see error handling in action
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Good Form Validation
+        const goodForm = document.getElementById('goodForm');
+        const errorSummary = document.getElementById('errorSummary');
+        const errorList = document.getElementById('errorList');
+        const liveRegion = document.getElementById('liveRegion');
+
+        // Helper function to validate email
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Helper function to validate password
+        function isValidPassword(password) {
+            return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
+        }
+
+        // Helper function to validate phone
+        function isValidPhone(phone) {
+            return !phone || /^\+?[\d\s-]{10,}$/.test(phone);
+        }
+
+        // Form validation
+        goodForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const errors = [];
+            let isValid = true;
+
+            // Reset previous errors
+            errorList.innerHTML = '';
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('error', 'valid');
+            });
+
+            // Validate First Name
+            const firstName = document.getElementById('firstName');
+            if (!firstName.value || firstName.value.length < 2) {
+                isValid = false;
+                firstName.classList.add('error');
+                errors.push('First Name must be at least 2 characters long');
+            } else {
+                firstName.classList.add('valid');
+            }
+
+            // Validate Email
+            const email = document.getElementById('email');
+            if (!isValidEmail(email.value)) {
+                isValid = false;
+                email.classList.add('error');
+                errors.push('Please enter a valid email address');
+            } else {
+                email.classList.add('valid');
+            }
+
+            // Validate Password
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            if (!isValidPassword(password.value)) {
+                isValid = false;
+                password.classList.add('error');
+                errors.push('Password must be at least 8 characters with letters and numbers');
+            } else {
+                password.classList.add('valid');
+            }
+
+            // Validate Confirm Password
+            if (password.value !== confirmPassword.value) {
+                isValid = false;
+                confirmPassword.classList.add('error');
+                errors.push('Passwords do not match');
+            } else if (password.value) {
+                confirmPassword.classList.add('valid');
+            }
+
+            // Validate Phone (if provided)
+            const phone = document.getElementById('phone');
+            if (phone.value && !isValidPhone(phone.value)) {
+                isValid = false;
+                phone.classList.add('error');
+                errors.push('Please enter a valid phone number');
+            } else if (phone.value) {
+                phone.classList.add('valid');
+            }
+
+            // Validate Terms
+            const terms = document.getElementById('terms');
+            if (!terms.checked) {
+                isValid = false;
+                terms.classList.add('error');
+                errors.push('You must agree to the Terms and Conditions');
+            } else {
+                terms.classList.add('valid');
+            }
+
+            // Show error summary if there are errors
+            if (!isValid) {
+                errorSummary.classList.add('show');
+                errors.forEach(error => {
+                    const li = document.createElement('li');
+                    li.textContent = error;
+                    errorList.appendChild(li);
+                });
+                liveRegion.textContent = `Form submission failed. Found ${errors.length} errors.`;
+            } else {
+                errorSummary.classList.remove('show');
+                liveRegion.textContent = 'Form submitted successfully!';
+                // Here you would typically submit the form
+            }
+        });
+
+        // Real-time username validation
+        const username = document.getElementById('username');
+        const usernameError = document.getElementById('usernameError');
+        
+        username.addEventListener('input', function() {
+            if (this.value.length < 3) {
+                this.classList.add('error');
+                this.classList.remove('valid');
+                usernameError.textContent = 'Username must be at least 3 characters long';
+            } else {
+                // Simulate API check for username availability
+                setTimeout(() => {
+                    const isAvailable = Math.random() > 0.5; // Random availability for demo
+                    if (isAvailable) {
+                        this.classList.add('valid');
+                        this.classList.remove('error');
+                        usernameError.textContent = '';
+                        liveRegion.textContent = 'Username is available';
+                    } else {
+                        this.classList.add('error');
+                        this.classList.remove('valid');
+                        usernameError.textContent = 'Username is already taken';
+                        liveRegion.textContent = 'Username is not available';
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

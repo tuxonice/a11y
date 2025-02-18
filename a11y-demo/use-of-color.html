@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Use of Color (WCAG 1.4.1)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Bad examples - DO NOT COPY - For demonstration only */
+        .color-only-link {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        .status-color-only {
+            padding: 0.5rem;
+        }
+        .status-color-only.success {
+            background-color: #198754;
+            color: white;
+        }
+        .status-color-only.error {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        /* Good examples with patterns */
+        .pattern-success {
+            background-color: #198754;
+            color: white;
+            border: 2px solid #198754;
+            padding: 0.5rem;
+        }
+        .pattern-error {
+            background-color: #dc3545;
+            color: white;
+            border: 2px solid #dc3545;
+            padding: 0.5rem;
+        }
+        .pattern-success::before {
+            content: "✓ ";
+        }
+        .pattern-error::before {
+            content: "✕ ";
+        }
+        
+        /* Chart styles */
+        .chart-bar {
+            height: 30px;
+            margin: 10px 0;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background-color: #0d6efd;
+        }
+        .chart-bar-pattern {
+            height: 100%;
+            background-color: #0d6efd;
+            background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+            background-size: 1rem 1rem;
+        }
+        .chart-label {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="non-text-content.html">Non-text Content</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="use-of-color.html">Use of Color</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 1.4.1 Use of Color</h1>
+        <p class="lead">This page demonstrates how to properly convey information without relying solely on color.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Color is not the only way of distinguishing information.</li>
+                <li><b>What to do</b>: Use information in addition to color, such as shape or text, to convey meaning.</li>
+                <li><b>Why it's important</b>: Not everyone sees colors or sees them the same way.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="links-section">
+            <h2 id="links-section">Links and Interactive Elements</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3 class="h5">Bad Example: Color-Only Links</h3>
+                    <p>Here is some text with a <a href="#" class="color-only-link">color-only link</a> that relies solely on color to indicate it's clickable.</p>
+                    <div class="alert alert-danger">
+                        <strong>Why this fails:</strong> Links are only distinguished by color, making them difficult to identify for colorblind users or when printed in black and white.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3 class="h5">Good Example: Links with Multiple Indicators</h3>
+                    <p>Here is some text with a <a href="#">properly styled link</a> that uses both color and underline.</p>
+                    <div class="alert alert-success">
+                        <strong>Why this works:</strong> Links are identified by both color and underline, providing multiple visual cues.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="status-section">
+            <h2 id="status-section">Status Indicators</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3 class="h5">Bad Example: Color-Only Status</h3>
+                    <div class="status-color-only success">Operation Successful</div>
+                    <div class="status-color-only error">Operation Failed</div>
+                    <div class="alert alert-danger mt-3">
+                        <strong>Why this fails:</strong> Status is indicated only by background color.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3 class="h5">Good Example: Status with Icons and Patterns</h3>
+                    <div class="pattern-success">Operation Successful</div>
+                    <div class="pattern-error">Operation Failed</div>
+                    <div class="alert alert-success mt-3">
+                        <strong>Why this works:</strong> Status is indicated by color, icons, and text.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="form-section">
+            <h2 id="form-section">Form Validation</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3 class="h5">Bad Example: Color-Only Validation</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="bad-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control is-invalid" id="bad-email" style="border-color: #dc3545;">
+                        </div>
+                    </form>
+                    <div class="alert alert-danger">
+                        <strong>Why this fails:</strong> Invalid state is shown only through red border color.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3 class="h5">Good Example: Multi-Indicator Validation</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="good-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control is-invalid" id="good-email">
+                            <div class="invalid-feedback">
+                                <i class="bi bi-exclamation-triangle"></i> Please enter a valid email address
+                            </div>
+                        </div>
+                    </form>
+                    <div class="alert alert-success">
+                        <strong>Why this works:</strong> Invalid state is shown through color, icon, and text message.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="chart-section">
+            <h2 id="chart-section">Charts and Graphs</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3 class="h5">Bad Example: Color-Only Chart</h3>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 75%">
+                            <span class="chart-label">75%</span>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Why this fails:</strong> Data is represented only through color-filled bars.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3 class="h5">Good Example: Chart with Patterns</h3>
+                    <div class="chart-bar">
+                        <div class="chart-bar-pattern" style="width: 75%">
+                            <span class="chart-label">75%</span>
+                        </div>
+                    </div>
+                    <div class="alert alert-success">
+                        <strong>Why this works:</strong> Data is represented through color, patterns, and text labels.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices Summary</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Always provide multiple visual indicators beyond just color</li>
+                        <li class="list-group-item">Use patterns, icons, or textures to supplement color information</li>
+                        <li class="list-group-item">Include clear text labels and descriptions</li>
+                        <li class="list-group-item">Ensure sufficient color contrast for text and important elements</li>
+                        <li class="list-group-item">Test your design in grayscale to verify information is still clear</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labels and Instructions Demo - WCAG 3.3.2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .required-field::after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+        }
+        .help-icon {
+            color: #6c757d;
+            cursor: help;
+            margin-left: 4px;
+        }
+        .format-example {
+            color: #6c757d;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875em;
+            display: none;
+            margin-top: 0.25rem;
+        }
+        input:invalid:not(:placeholder-shown) + .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1>Labels and Instructions Demo (WCAG 3.3.2)</h1>
+        <p class="lead">This page demonstrates various ways to provide clear labels and instructions for form controls.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Users know what information to enter.</li>
+                <li><b>What to do</b>: Provide labels or instructions for inputs.</li>
+                <li><b>Why it's important</b>: Everyone, especially those with cognitive disabilities, will know how to respond.</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <strong>Note:</strong> Fields marked with an asterisk (*) are required.
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2 class="card-title h4">User Registration Form</h2>
+                <form id="registrationForm" class="mt-4" novalidate>
+                    <!-- Basic required field with clear label -->
+                    <div class="mb-4">
+                        <label for="username" class="form-label required-field">Username</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="username" 
+                               required 
+                               pattern="^[a-zA-Z][a-zA-Z0-9_]{2,19}$"
+                               placeholder="e.g., john_doe">
+                        <div class="format-example">
+                            Must start with a letter, can contain letters, numbers, and underscores, 3-20 characters long
+                        </div>
+                        <div class="error-message">
+                            Please enter a valid username following the format above
+                        </div>
+                    </div>
+
+                    <!-- Field group with fieldset and legend -->
+                    <fieldset class="mb-4">
+                        <legend class="h6">Name Information</legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="givenName" class="form-label required-field">Given Name</label>
+                                <input type="text" class="form-control" id="givenName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="familyName" class="form-label required-field">Family Name</label>
+                                <input type="text" class="form-control" id="familyName" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Phone number with specific format instructions -->
+                    <fieldset class="mb-4">
+                        <legend class="h6">Phone Number</legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="areaCode" class="form-label">Area Code</label>
+                                <input type="tel" 
+                                       class="form-control" 
+                                       id="areaCode" 
+                                       maxlength="3" 
+                                       pattern="[0-9]{3}"
+                                       placeholder="123">
+                                <div class="format-example">3 digits</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exchange" class="form-label">Exchange</label>
+                                <input type="tel" 
+                                       class="form-control" 
+                                       id="exchange" 
+                                       maxlength="3" 
+                                       pattern="[0-9]{3}"
+                                       placeholder="456">
+                                <div class="format-example">3 digits</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="number" class="form-label">Number</label>
+                                <input type="tel" 
+                                       class="form-control" 
+                                       id="number" 
+                                       maxlength="4" 
+                                       pattern="[0-9]{4}"
+                                       placeholder="7890">
+                                <div class="format-example">4 digits</div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- State selection with helper -->
+                    <div class="mb-4">
+                        <label for="state" class="form-label">State</label>
+                        <div class="input-group">
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="state" 
+                                   maxlength="2" 
+                                   placeholder="CA"
+                                   aria-describedby="stateHelp">
+                            <button class="btn btn-outline-secondary" 
+                                    type="button" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#stateListModal">
+                                View State Codes
+                            </button>
+                        </div>
+                        <div id="stateHelp" class="format-example">
+                            Enter two-letter state code (e.g., CA for California)
+                        </div>
+                    </div>
+
+                    <!-- Date with specific format -->
+                    <div class="mb-4">
+                        <label for="birthDate" class="form-label">Birth Date</label>
+                        <input type="date" 
+                               class="form-control" 
+                               id="birthDate"
+                               aria-describedby="dateHelp">
+                        <div id="dateHelp" class="format-example">
+                            Select a date or enter in MM-DD-YYYY format
+                        </div>
+                    </div>
+
+                    <!-- Preferences with description list -->
+                    <div class="mb-4">
+                        <label class="form-label d-block">Communication Preferences</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="emailUpdates">
+                            <label class="form-check-label" for="emailUpdates">
+                                Email Updates
+                            </label>
+                            <small class="d-block text-muted">Receive weekly newsletter and important announcements</small>
+                        </div>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="smsUpdates">
+                            <label class="form-check-label" for="smsUpdates">
+                                SMS Updates
+                            </label>
+                            <small class="d-block text-muted">Receive urgent notifications via text message</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- State Codes Modal -->
+    <div class="modal fade" id="stateListModal" tabindex="-1" aria-labelledby="stateListModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="stateListModalLabel">US State Codes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li>AL - Alabama</li>
+                                <li>AK - Alaska</li>
+                                <li>AZ - Arizona</li>
+                                <li>AR - Arkansas</li>
+                                <li>CA - California</li>
+                                <!-- Add more states as needed -->
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li>NY - New York</li>
+                                <li>NC - North Carolina</li>
+                                <li>ND - North Dakota</li>
+                                <li>OH - Ohio</li>
+                                <li>OK - Oklahoma</li>
+                                <!-- Add more states as needed -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form submission handler
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (e.target.checkValidity()) {
+                alert('Form submitted successfully!');
+            } else {
+                e.target.classList.add('was-validated');
+            }
+        });
+    </script>
+</body>
+</html>

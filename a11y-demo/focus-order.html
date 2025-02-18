@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Focus Order (WCAG 2.4.3)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .focus-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+
+        .focus-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .focus-highlight:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        /* Bad example styles */
+        .bad-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .bad-form label {
+            grid-column: 2;
+        }
+
+        .bad-form input {
+            grid-column: 1;
+        }
+
+        /* Good example styles */
+        .good-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .good-form .form-group {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-order-demo {
+            border: 2px solid #dee2e6;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .current-focus {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <div class="current-focus" role="status" aria-live="polite">
+        <strong>Currently focused:</strong> <span id="focused-element">None</span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="focus-order.html">Focus Order</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 2.4.3 Focus Order (Level A)</h1>
+        <p class="lead">This page demonstrates proper focus order implementation and common pitfalls to avoid.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Keyboard users navigate content in a correct order.</li>
+                <li><b>What to do</b>: Elements receive focus in an order that preserves meaning.</li>
+                <li><b>Why it's important</b>: Navigating a site or application with only the keyboard will make sense.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="logical-order">
+            <h2 id="logical-order">Logical Focus Order Example</h2>
+            <div class="tab-order-demo">
+                <p>Tab through these elements to see a logical focus order:</p>
+                <div class="d-flex flex-column gap-2">
+                    <a href="#" class="focus-highlight"><span class="focus-number">1</span>First link</a>
+                    <a href="#" class="focus-highlight"><span class="focus-number">2</span>Second link</a>
+                    <button class="btn btn-primary focus-highlight">
+                        <span class="focus-number">3</span>Third (Button)
+                    </button>
+                    <a href="#" class="focus-highlight"><span class="focus-number">4</span>Fourth link</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="form-examples">
+            <h2 id="form-examples">Form Focus Order</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3 class="h5">Bad Example: Illogical Form Order</h3>
+                    <form class="bad-form mb-3">
+                        <input type="text" id="bad-name" class="form-control">
+                        <label for="bad-name">Name</label>
+                        
+                        <input type="email" id="bad-email" class="form-control">
+                        <label for="bad-email">Email</label>
+                        
+                        <input type="tel" id="bad-phone" class="form-control">
+                        <label for="bad-phone">Phone</label>
+                    </form>
+                    <div class="alert alert-danger">
+                        <strong>Why this fails:</strong> Labels appear after inputs in the tab order, creating confusion.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3 class="h5">Good Example: Logical Form Order</h3>
+                    <form class="good-form mb-3">
+                        <div class="form-group">
+                            <label for="good-name">Name</label>
+                            <input type="text" id="good-name" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="good-email">Email</label>
+                            <input type="email" id="good-email" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="good-phone">Phone</label>
+                            <input type="tel" id="good-phone" class="form-control">
+                        </div>
+                    </form>
+                    <div class="alert alert-success">
+                        <strong>Why this works:</strong> Labels appear before inputs in a logical reading order.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="modal-focus">
+            <h2 id="modal-focus">Modal Dialog Focus Order</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#focusModal">
+                Open Modal Example
+            </button>
+
+            <div class="modal fade" id="focusModal" tabindex="-1" aria-labelledby="focusModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="focusModalLabel">Modal Focus Order</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Notice how focus moves in this modal:</p>
+                            <ol>
+                                <li>Focus moves to the modal when opened</li>
+                                <li>Tab key cycles through modal elements</li>
+                                <li>Focus returns to trigger button when closed</li>
+                            </ol>
+                            <div class="mb-3">
+                                <label for="modalInput" class="form-label">Sample Input</label>
+                                <input type="text" class="form-control" id="modalInput">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="dynamic-content">
+            <h2 id="dynamic-content">Dynamic Content Focus Management</h2>
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary mb-3" id="addContentBtn">Add New Content</button>
+                    <div id="dynamicContent" class="d-flex flex-column gap-2">
+                        <!-- Dynamic content will be added here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Focus Order Best Practices</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Maintain a logical tab order that matches visual layout</li>
+                        <li class="list-group-item">Ensure form labels precede their inputs in the tab order</li>
+                        <li class="list-group-item">Keep related elements together in the focus sequence</li>
+                        <li class="list-group-item">Manage focus appropriately in dynamic content</li>
+                        <li class="list-group-item">Test navigation with keyboard only</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="focus-indicator" role="status" aria-live="polite">
+        Press Tab to navigate through elements
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Track focused element
+        document.addEventListener('focusin', function(e) {
+            const element = e.target;
+            let elementDescription = element.tagName.toLowerCase();
+            if (element.id) {
+                elementDescription += ` #${element.id}`;
+            } else if (element.className) {
+                elementDescription += ` .${element.className.split(' ')[0]}`;
+            }
+            document.getElementById('focused-element').textContent = elementDescription;
+        });
+
+        // Dynamic content example
+        let contentCounter = 1;
+        document.getElementById('addContentBtn').addEventListener('click', function() {
+            const container = document.getElementById('dynamicContent');
+            const newElement = document.createElement('div');
+            newElement.className = 'card';
+            newElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">New Content ${contentCounter}</h5>
+                    <button class="btn btn-outline-primary focus-highlight">
+                        <span class="focus-number">${contentCounter}</span>
+                        Interact
+                    </button>
+                </div>
+            `;
+            container.appendChild(newElement);
+            
+            // Focus the new button
+            const newButton = newElement.querySelector('button');
+            newButton.focus();
+            
+            contentCounter++;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Focus Visible (WCAG 2.4.7)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Bad example - focus outline removed */
+        .no-focus-styles:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Good focus styles */
+        .enhanced-focus:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+
+        .high-contrast-focus:focus {
+            outline: 3px solid #000;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px #fff, 0 0 0 6px #000;
+        }
+
+        .custom-card {
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .custom-card:focus-within {
+            border-color: #007bff;
+        }
+
+        .focus-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+
+        /* Different states focus styles */
+        .state-focus {
+            position: relative;
+        }
+
+        .state-focus:focus {
+            outline: none;
+        }
+
+        .state-focus:focus::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid #007bff;
+            border-radius: 6px;
+            animation: focusPulse 2s infinite;
+        }
+
+        @keyframes focusPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Focus styles for dark mode */
+        .dark-theme {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .dark-theme .dark-focus:focus {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Current focus display */
+        .current-focus-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main enhanced-focus">Skip to main content</a>
+
+    <div class="current-focus-display" role="status" aria-live="polite">
+        <strong>Currently focused:</strong> <span id="focused-element">None</span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand enhanced-focus" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler enhanced-focus" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link enhanced-focus" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active enhanced-focus" aria-current="page" href="focus-visible.html">Focus Visible</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 2.4.7 Focus Visible (Level AA)</h1>
+        <p class="lead">This page demonstrates how to implement visible focus indicators for keyboard navigation.</p>
+
+        <div>
+            <ul>
+                <li><b>Goal</b>: Users know which element has keyboard focus.</li>
+                <li><b>What to do</b>: Ensure each item receiving focus has a visible indicator.</li>
+                <li><b>Why it's important</b>: Without a focus indicator, sighted keyboard users cannot operate the page.</li>
+            </ul>
+        </div>
+
+        <section class="mb-5" aria-labelledby="bad-examples">
+            <h2 id="bad-examples">Poor Focus Visibility Examples</h2>
+            <div class="example-box">
+                <h3 class="h5">Hidden Focus Indicators</h3>
+                <div class="d-flex gap-2 mb-3">
+                    <button class="btn btn-primary no-focus-styles">Button without focus</button>
+                    <a href="#" class="btn btn-link no-focus-styles">Link without focus</a>
+                    <input type="text" class="form-control no-focus-styles" placeholder="Input without focus">
+                </div>
+                <div class="alert alert-danger">
+                    <strong>Why this fails:</strong>
+                    <ul class="mb-0">
+                        <li>Focus indicators have been removed</li>
+                        <li>Keyboard users cannot see their current position</li>
+                        <li>Violates WCAG 2.4.7 requirements</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-examples">
+            <h2 id="good-examples">Good Focus Visibility Examples</h2>
+            <div class="example-box">
+                <h3 class="h5">Clear Focus Indicators</h3>
+                <div class="d-flex gap-2 mb-3">
+                    <button class="btn btn-primary enhanced-focus">Enhanced focus button</button>
+                    <a href="#" class="btn btn-link enhanced-focus">Enhanced focus link</a>
+                    <input type="text" class="form-control enhanced-focus" placeholder="Enhanced focus input">
+                </div>
+                <div class="alert alert-success">
+                    <strong>Why this works:</strong>
+                    <ul class="mb-0">
+                        <li>Clear visual focus indicators</li>
+                        <li>High contrast outline</li>
+                        <li>Sufficient size and spacing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="complex-components">
+            <h2 id="complex-components">Complex Components</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="custom-card card">
+                        <div class="card-body">
+                            <h3 class="h5">Interactive Card</h3>
+                            <p>This card shows focus-within state.</p>
+                            <input type="text" class="form-control enhanced-focus mb-2" placeholder="Type here...">
+                            <button class="btn btn-primary enhanced-focus">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="dark-theme">
+                        <h3 class="h5">Dark Theme Components</h3>
+                        <button class="btn btn-light dark-focus mb-2">Light Button</button>
+                        <input type="text" class="form-control dark-focus" placeholder="Dark theme input">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="state-indicators">
+            <h2 id="state-indicators">State-Based Focus Indicators</h2>
+            <div class="example-box">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary state-focus">Animated focus</button>
+                    <button class="btn btn-success state-focus">Interactive state</button>
+                    <button class="btn btn-warning state-focus">Warning state</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="high-contrast">
+            <h2 id="high-contrast">High Contrast Focus</h2>
+            <div class="example-box">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary high-contrast-focus">High contrast button</button>
+                    <a href="#" class="btn btn-link high-contrast-focus">High contrast link</a>
+                    <input type="text" class="form-control high-contrast-focus" placeholder="High contrast input">
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Focus Visibility Best Practices</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Never remove focus indicators completely</li>
+                        <li class="list-group-item">Ensure sufficient color contrast for focus indicators</li>
+                        <li class="list-group-item">Make focus indicators large enough to be visible</li>
+                        <li class="list-group-item">Consider different color schemes and backgrounds</li>
+                        <li class="list-group-item">Use multiple visual cues (outline, shadow, etc.)</li>
+                        <li class="list-group-item">Test focus visibility in different viewport sizes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="focus-indicator" role="status" aria-live="polite">
+        Press Tab to see focus indicators in action
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Track focused element
+        document.addEventListener('focusin', function(e) {
+            const element = e.target;
+            let elementDescription = element.tagName.toLowerCase();
+            if (element.id) {
+                elementDescription += ` #${element.id}`;
+            } else if (element.className) {
+                elementDescription += ` .${element.className.split(' ')[0]}`;
+            }
+            document.getElementById('focused-element').textContent = elementDescription;
+        });
+    </script>
+</body>
+</html>
