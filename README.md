@@ -4,63 +4,75 @@
 This means that content should be available to at least one of their senses, such as sight or hearing. 
 For example, providing text alternatives for non-text content, ensuring that videos have captions, and making sure that content can be adapted to different sensory modalities are essential practices.
 
-1.1 Text Alternatives 
+## 1.1 Text Alternatives 
 
 Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
 
-    1.1.1 - Non-text Content (Level A)
-        - Goal: Non-text information is available to more people.
-        - What to do: Create a text alternative for visual and auditory content.
-        - Why it's important: People who can’t fully see or hear content can understand it.
+###    1.1.1 - Non-text Content (Level A)
 
-1.2 Time-based Media [Provide alternatives for time-based media.]
+- Goal: Non-text information is available to more people.
+- What to do: Create a text alternative for visual and auditory content.
+- Why it's important: People who can’t fully see or hear content can understand it.
 
-    1.2.1 Audio-only and Video-only (Prerecorded) (Level A)
-        - Goal: Audio and video-only content can be understood by more people.
-        - What to do: Provide an alternative when content is perceivable with only one sense.
-        - Why it's important: People who can’t fully see or hear content can understand it.
-        
-    1.2.2 Captions (Prerecorded) (Level A)
-        - Goal: Videos can be played with captions.
-        - What to do: Provide synchronized text for audio content in existing videos.
-        - Why it's important: People who are deaf or hard of hearing can understand audio in videos.
-        
-    1.2.3 Audio Description or Media Alternative (Prerecorded)  (Level A)
-        - Goal: Prerecorded videos can be understood by more people.
-        - What to do: Provide a description of the visual content in videos.
-        - Why it's important: People who are blind or who cannot understand the visual content can have it described.
+## 1.2 Time-based Media
 
-    1.2.4 Captions (Live) (Level AA)
-        - Goal: Live videos have captions.
-        - What to do: Provide synchronized text for audio content in real-time videos.
-        - Why it's important: People who are deaf or hard of hearing can understand audio in real-time video content.
-            
-    1.2.5 Audio Description (Prerecorded) (Level AA)
-        - Goal: Videos can be played with audio descriptions.
-        - What to do:Provide a synchronized spoken description of the visual content in videos.
-        - Why it's important:People who cannot see or understand the visual content can hear about it while playing videos.
+Provide alternatives for time-based media
+
+### 1.2.1 Audio-only and Video-only (Prerecorded) (Level A)
+
+- Goal: Audio and video-only content can be understood by more people.
+- What to do: Provide an alternative when content is perceivable with only one sense.
+- Why it's important: People who can’t fully see or hear content can understand it.
         
-    1.2.6 Sign Language (Prerecorded) (Level AAA)
-        - Goal: Videos can be accompanied by sign language.
-        - What to do: Provide sign language interpretation for audio content in existing videos.
-        - Why it's important: People who are deaf or hard of hearing have more ways to understand multimedia content.
+### 1.2.2 Captions (Prerecorded) (Level A)
+
+- Goal: Videos can be played with captions.
+- What to do: Provide synchronized text for audio content in existing videos.
+- Why it's important: People who are deaf or hard of hearing can understand audio in videos.
+
+### 1.2.3 Audio Description or Media Alternative (Prerecorded)  (Level A)
+
+- Goal: Prerecorded videos can be understood by more people.
+- What to do: Provide a description of the visual content in videos.
+- Why it's important: People who are blind or who cannot understand the visual content can have it described.
+
+### 1.2.4 Captions (Live) (Level AA)
+
+- Goal: Live videos have captions.
+- What to do: Provide synchronized text for audio content in real-time videos.
+- Why it's important: People who are deaf or hard of hearing can understand audio in real-time video content.
+
+### 1.2.5 Audio Description (Prerecorded) (Level AA)
+
+- Goal: Videos can be played with audio descriptions.
+- What to do:Provide a synchronized spoken description of the visual content in videos.
+- Why it's important:People who cannot see or understand the visual content can hear about it while playing videos.
+
+### 1.2.6 Sign Language (Prerecorded) (Level AAA)
+
+- Goal: Videos can be accompanied by sign language.
+- What to do: Provide sign language interpretation for audio content in existing videos.
+- Why it's important: People who are deaf or hard of hearing have more ways to understand multimedia content.
+
+### 1.2.7 Extended Audio Description (Prerecorded) (Level AAA)
+
+- Goal: Videos can be played with more detailed audio descriptions.
+- What to do: Provide extended spoken descriptions of the visual content in videos.
+- Why it's important: People who are blind or who cannot understand the visual content can have it described to them while playing videos.
+
+### 1.2.8 Media Alternative (Prerecorded) (Level AAA)
+
+- Goal: Precorded videos can be understood by more people.
+- What to do: Provide a text equivalent for all content in videos.
+- Why it's important: More people, including those who are deaf-blind, can better understand the content at their own pace.
+
+### 1.2.9 Audio-only (Live) (Level AAA)
+
+- Goal: Live audio can be understood by more people.
+- What to do: Provide a text equivalent for live audio-only content.
+- Why it's important: People who cannot hear or understand real-time audio can read an equivalent.
         
-    1.2.7 Extended Audio Description (Prerecorded) (Level AAA)
-        - Goal: Videos can be played with more detailed audio descriptions.
-        - What to do: Provide extended spoken descriptions of the visual content in videos.
-        - Why it's important: People who are blind or who cannot understand the visual content can have it described to them while playing videos.
-        
-    1.2.8 Media Alternative (Prerecorded) (Level AAA)
-        - Goal: Precorded videos can be understood by more people.
-        - What to do: Provide a text equivalent for all content in videos.
-        - Why it's important: More people, including those who are deaf-blind, can better understand the content at their own pace.
-        
-    1.2.9 Audio-only (Live) (Level AAA)
-        - Goal: Live audio can be understood by more people.
-        - What to do: Provide a text equivalent for live audio-only content.
-        - Why it's important: People who cannot hear or understand real-time audio can read an equivalent.
-        
-1.3 Adaptable [Create content that can be presented in different ways (for example simpler layout) without losing information or structure.]
+## 1.3 Adaptable [Create content that can be presented in different ways (for example simpler layout) without losing information or structure.]
     
     1.3.1 Info and Relationships (Level A)
         - Goal: Information about content structure is available to more people.
