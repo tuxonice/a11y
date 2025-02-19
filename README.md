@@ -4,7 +4,9 @@
 This means that content should be available to at least one of their senses, such as sight or hearing. 
 For example, providing text alternatives for non-text content, ensuring that videos have captions, and making sure that content can be adapted to different sensory modalities are essential practices.
 
-1.1 Text Alternatives [Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.]
+1.1 Text Alternatives 
+
+Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
 
     1.1.1 - Non-text Content (Level A)
         - Goal: Non-text information is available to more people.
