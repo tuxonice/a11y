@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Accessibility Demo - WCAG 2.1.1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .custom-card {
+            transition: transform 0.2s;
+        }
+        .custom-card:focus-within {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px #0d6efd;
+            outline: none;
+        }
+        .custom-menu {
+            position: relative;
+            display: inline-block;
+        }
+        .menu-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .menu-content.show {
+            display: block;
+        }
+        .menu-item {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: black;
+        }
+        .menu-item:focus, .menu-item:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1>Keyboard Accessibility Demo (WCAG 2.1.1)</h1>
+        <p class="lead">This page demonstrates various interactive elements that are fully operable using only a keyboard. Try using Tab, Enter, Space, and arrow keys to navigate and interact with the elements below.</p>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card custom-card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Standard Form Controls</h2>
+                        <form id="demoForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="preference" class="form-label">Preference:</label>
+                                <select class="form-select" id="preference">
+                                    <option value="">Choose an option</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="subscribe">
+                                    <label class="form-check-label" for="subscribe">
+                                        Subscribe to newsletter
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card custom-card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Custom Keyboard Menu</h2>
+                        <p>Press Enter or Space to open/close. Use arrow keys to navigate items.</p>
+                        <div class="custom-menu">
+                            <button id="menuButton" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false">
+                                Open Menu
+                            </button>
+                            <div id="menuContent" class="menu-content" role="menu">
+                                <a href="#" class="menu-item" role="menuitem">Item 1</a>
+                                <a href="#" class="menu-item" role="menuitem">Item 2</a>
+                                <a href="#" class="menu-item" role="menuitem">Item 3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Modal Dialog Example</h2>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+                            Open Modal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="demoModalLabel">Keyboard Accessible Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This modal is keyboard accessible. You can:</p>
+                    <ul>
+                        <li>Open it with Enter or Space</li>
+                        <li>Close it with Escape</li>
+                        <li>Tab through its contents</li>
+                        <li>Focus is trapped within the modal while it's open</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Custom keyboard-accessible menu
+        const menuButton = document.getElementById('menuButton');
+        const menuContent = document.getElementById('menuContent');
+        const menuItems = menuContent.querySelectorAll('.menu-item');
+        let currentFocusIndex = -1;
+
+        menuButton.addEventListener('click', toggleMenu);
+        menuButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
+
+        function toggleMenu() {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !isExpanded);
+            menuContent.classList.toggle('show');
+            
+            if (!isExpanded) {
+                currentFocusIndex = 0;
+                menuItems[0].focus();
+            }
+        }
+
+        // Keyboard navigation for menu items
+        menuContent.addEventListener('keydown', (e) => {
+            const itemCount = menuItems.length;
+
+            switch (e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    currentFocusIndex = (currentFocusIndex + 1) % itemCount;
+                    menuItems[currentFocusIndex].focus();
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    currentFocusIndex = (currentFocusIndex - 1 + itemCount) % itemCount;
+                    menuItems[currentFocusIndex].focus();
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    toggleMenu();
+                    menuButton.focus();
+                    break;
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuButton.contains(e.target) && !menuContent.contains(e.target)) {
+                menuContent.classList.remove('show');
+                menuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('demoForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>
