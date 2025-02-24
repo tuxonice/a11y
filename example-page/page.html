@@ -37,6 +37,18 @@
         .skip-link:focus {
             top: 0;
         }
+
+        .btn-primary-custom {
+            background-color: #007BFF; /* Blue background */
+            border-color: #0056b3; /* Darker blue border */
+            color: white; /* White text for contrast */
+        }
+
+        .btn-primary-custom:focus {
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 1); /* Focus shadow */
+            outline: none; /* Remove default outline */
+        }
+
     </style>
 </head>
 <body>
@@ -136,6 +148,15 @@
             More Information
         </button>
     </div>
+
+    <div class="text-center py-4 bg-dark">
+        <button type="button" class="btn btn-primary btn-primary-custom">
+            Contact Us
+        </button>
+
+    </div>
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
