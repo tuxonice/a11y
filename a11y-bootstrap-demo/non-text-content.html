@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Bootstrap Demo - Non-text Content (WCAG 1.1.1)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="non-text-content.html">Non-text Content</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forms.html">Forms</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 1.1.1 Non-text Content (Level A)</h1>
+        <p class="lead">This page demonstrates how to properly handle non-text content to ensure accessibility.</p>
+
+        <section class="mb-5" aria-labelledby="informative-images">
+            <h2 id="informative-images">Informative Images</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <img src="https://placekitten.com/400/300" alt="A gray tabby kitten playing with a red ball of yarn" 
+                         class="img-fluid rounded" width="400" height="300">
+                    <p class="mt-2"><strong>Good Example:</strong> Image with descriptive alt text that conveys the meaning.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <img src="https://placekitten.com/400/300" alt="" 
+                         class="img-fluid rounded" width="400" height="300">
+                    <p class="mt-2"><strong>Bad Example:</strong> Image missing meaningful alt text.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="decorative-images">
+            <h2 id="decorative-images">Decorative Images</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>This is an example of decorative content that doesn't need description:</p>
+                    <img src="https://via.placeholder.com/400x2/007bff/007bff" alt="" role="presentation" 
+                         class="img-fluid" width="400" height="2">
+                    <p class="mt-2"><strong>Good Example:</strong> Decorative element with empty alt attribute.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="complex-images">
+            <h2 id="complex-images">Complex Images</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <img src="https://via.placeholder.com/400x300/007bff/fff?text=Chart" 
+                         alt="Bar chart showing sales growth" class="img-fluid rounded" width="400" height="300"
+                         aria-describedby="chart-description">
+                    <div id="chart-description" class="visually-hidden">
+                        Detailed description: The bar chart shows sales growth over 4 quarters.
+                        Q1: 25%, Q2: 40%, Q3: 55%, Q4: 75%, demonstrating consistent growth throughout the year.
+                    </div>
+                    <p class="mt-2"><strong>Good Example:</strong> Complex image with both alt text and detailed description.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="functional-images">
+            <h2 id="functional-images">Functional Images</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <button class="btn btn-primary">
+                        <img src="https://via.placeholder.com/20/ffffff/ffffff" alt="Search" width="20" height="20">
+                        Search
+                    </button>
+                    <p class="mt-2"><strong>Good Example:</strong> Icon button with descriptive text.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <button class="btn btn-primary">
+                        <img src="https://via.placeholder.com/20/ffffff/ffffff" alt="" width="20" height="20">
+                    </button>
+                    <p class="mt-2"><strong>Bad Example:</strong> Icon-only button without accessible name.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="captcha-example">
+            <h2 id="captcha-example">CAPTCHA Example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="border p-3 rounded">
+                        <img src="https://via.placeholder.com/200x80/007bff/fff?text=CAPTCHA" 
+                             alt="CAPTCHA verification" width="200" height="80">
+                        <div class="mt-2">
+                            <label for="captcha-input" class="form-label">Enter the text shown above:</label>
+                            <input type="text" id="captcha-input" class="form-control" required
+                                   aria-describedby="captcha-help">
+                            <div id="captcha-help" class="form-text">
+                                Can't see the image? <a href="#" class="text-decoration-underline">Listen to audio version</a>
+                                or <a href="#" class="text-decoration-underline">Get help</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-2"><strong>Good Example:</strong> CAPTCHA with alternative methods.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="wcag-requirements">
+            <h2 id="wcag-requirements">WCAG 1.1.1 Requirements</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="h5">Key Points Demonstrated:</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Informative images have descriptive alt text</li>
+                        <li class="list-group-item">Decorative images have empty alt attributes</li>
+                        <li class="list-group-item">Complex images include detailed descriptions</li>
+                        <li class="list-group-item">Functional images (buttons/links) have clear purpose</li>
+                        <li class="list-group-item">CAPTCHA provides multiple ways to verify</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Bootstrap Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

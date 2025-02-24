@@ -1,0 +1,55 @@
+/* Focus styles */
+:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.skip-to-main:focus {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Improved color contrast */
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Visible focus for interactive elements */
+.btn:focus,
+.nav-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+}
+
+/* Better link underlines */
+a:not(.btn):not(.nav-link) {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+/* Improved form field focus */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* High contrast mode improvements */
+@media (forced-colors: active) {
+    .btn {
+        border: 2px solid currentColor;
+    }
+    
+    .card {
+        border: 2px solid currentColor;
+    }
+}

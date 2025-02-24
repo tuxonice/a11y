@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Bootstrap Demo - Accessible Forms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="forms.html">Forms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="components.html">Components</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="media.html">Media</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>Accessible Form Examples</h1>
+        <p class="lead">This page demonstrates accessible form controls and best practices.</p>
+
+        <form class="needs-validation" novalidate>
+            <div class="mb-4">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" required
+                       aria-describedby="nameHelp">
+                <div id="nameHelp" class="form-text">Enter your first and last name</div>
+                <div class="invalid-feedback">Please enter your full name</div>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required
+                       aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else</div>
+                <div class="invalid-feedback">Please enter a valid email address</div>
+            </div>
+
+            <fieldset class="mb-4">
+                <legend class="form-label">Preferred Contact Method</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contactMethod" 
+                           id="contactEmail" value="email" checked>
+                    <label class="form-check-label" for="contactEmail">Email</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contactMethod" 
+                           id="contactPhone" value="phone">
+                    <label class="form-check-label" for="contactPhone">Phone</label>
+                </div>
+            </fieldset>
+
+            <div class="mb-4">
+                <label for="interests" class="form-label">Areas of Interest</label>
+                <select class="form-select" id="interests" multiple aria-label="Select your areas of interest">
+                    <option value="technology">Technology</option>
+                    <option value="design">Design</option>
+                    <option value="business">Business</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="newsletter" required>
+                    <label class="form-check-label" for="newsletter">
+                        I agree to receive newsletters
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <section class="mt-5" aria-labelledby="a11y-features">
+            <h2 id="a11y-features">Accessibility Features Demonstrated</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Proper label associations</li>
+                <li class="list-group-item">Clear error messages</li>
+                <li class="list-group-item">ARIA descriptions</li>
+                <li class="list-group-item">Fieldset and legend for grouped inputs</li>
+                <li class="list-group-item">Form validation feedback</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Bootstrap Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form validation
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</body>
+</html>
