@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyboard Accessibility Demo - WCAG 2.1.1</title>
+    <title>A11y Demo - Images of Text (WCAG 1.4.5)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         .custom-card {
             transition: transform 0.2s;
@@ -41,6 +43,29 @@
     </style>
 </head>
 <body>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">A11y Demo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="images-of-text.html">Images of Text</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main id="main-content" class="container my-5">
     <div class="container py-5">
         <h1>Keyboard Accessibility Demo (WCAG 2.1.1)</h1>
         <p class="lead">This page demonstrates various interactive elements that are fully operable using only a keyboard. Try using Tab, Enter, Space, and arrow keys to navigate and interact with the elements below.</p>
@@ -152,7 +177,7 @@
             const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
             menuButton.setAttribute('aria-expanded', !isExpanded);
             menuContent.classList.toggle('show');
-            
+
             if (!isExpanded) {
                 currentFocusIndex = 0;
                 menuItems[0].focus();
@@ -196,5 +221,12 @@
             alert('Form submitted successfully!');
         });
     </script>
+</main>
+
+<footer class="bg-light py-3 mt-5">
+    <div class="container text-center">
+        <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+    </div>
+</footer>
 </body>
 </html>
