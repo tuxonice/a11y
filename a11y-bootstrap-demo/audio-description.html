@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Bootstrap Demo - Audio Description or Media Alternative (WCAG 1.2.3)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .transcript-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .timestamp {
+            color: #6c757d;
+            font-size: 0.875em;
+            margin-right: 0.5rem;
+        }
+
+        .transcript-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .transcript-line:hover {
+            background-color: #f8f9fa;
+        }
+
+        .audio-description-track {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .comparison-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .controls-wrapper {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .description-toggle {
+            margin-bottom: 1rem;
+        }
+
+        .media-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .time-marker {
+            background-color: #e9ecef;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875em;
+            cursor: pointer;
+        }
+
+        .time-marker:hover {
+            background-color: #dee2e6;
+        }
+
+        .description-text {
+            font-style: italic;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">A11y Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="audio-description.html">Audio Description</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 1.2.3 Audio Description or Media Alternative (Level A)</h1>
+        <p class="lead">This page demonstrates how to provide audio descriptions or media alternatives for prerecorded video content.</p>
+
+        <section class="mb-5" aria-labelledby="bad-example">
+            <h2 id="bad-example">Poor Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Video Without Audio Description</h3>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- Original video without audio description -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7-XOHN2BWG4?start=0&end=60" 
+                                title="What is Audio Description? (Original Version)" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger mt-3">
+                    <strong>Why this fails:</strong>
+                    <ul class="mb-0">
+                        <li>No audio description for important visual information</li>
+                        <li>No text alternative available</li>
+                        <li>Visual-only content is not accessible to blind users</li>
+                        <li>Important context is missing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="good-example">
+            <h2 id="good-example">Good Implementation Example</h2>
+            
+            <div class="comparison-card">
+                <h3>Video With Audio Description and Text Alternative</h3>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- Version with audio description -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7-XOHN2BWG4?start=60" 
+                                title="What is Audio Description? (With Audio Description)" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="controls-wrapper">
+                        <div class="description-toggle">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="toggleDescription" checked>
+                                <label class="form-check-label" for="toggleDescription">
+                                    Enable Audio Descriptions
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="media-controls">
+                            <button class="btn btn-primary" id="playPause">
+                                Play/Pause
+                            </button>
+                            <button class="btn btn-secondary" id="rewind">
+                                Rewind 10s
+                            </button>
+                            <button class="btn btn-secondary" id="forward">
+                                Forward 10s
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h4>Full Text Alternative</h4>
+                    <div class="transcript-container">
+                        <div class="transcript-line">
+                            <span class="timestamp">00:00</span>
+                            <span class="description-text">[Opening with colorful animation]</span>
+                            Audio description helps blind and low vision audiences enjoy visual media.
+                        </div>
+                        <div class="transcript-line">
+                            <span class="timestamp">00:15</span>
+                            <span class="description-text">[Person using screen reader]</span>
+                            It provides descriptions of important visual information during natural pauses in dialogue.
+                        </div>
+                        <div class="transcript-line">
+                            <span class="timestamp">00:30</span>
+                            <span class="description-text">[Examples of visual scenes being described]</span>
+                            The narrator describes actions, characters, costumes, and other visual elements.
+                        </div>
+                        <!-- Additional transcript lines would go here -->
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <strong>Why this works:</strong>
+                    <ul class="mb-0">
+                        <li>Audio description track available</li>
+                        <li>Full text transcript with timestamps</li>
+                        <li>Description toggle control</li>
+                        <li>Accessible media controls</li>
+                        <li>Visual descriptions included in transcript</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-labelledby="alternative-formats">
+            <h2 id="alternative-formats">Alternative Format Examples</h2>
+            
+            <div class="comparison-card">
+                <h3>Descriptive Transcript</h3>
+                <p>A descriptive transcript includes both the audio content and descriptions of important visual information:</p>
+                
+                <div class="transcript-container">
+                    <h4>Scene 1: Introduction</h4>
+                    <p><span class="description-text">[Animated introduction with text and graphics]</span><br>
+                    The video begins with an explanation of audio description and its importance for accessibility.</p>
+
+                    <h4>Scene 2: Demonstration</h4>
+                    <p><span class="description-text">[Split screen showing content with and without audio description]</span><br>
+                    A comparison demonstrates how audio description enhances the viewing experience for blind and low vision audiences.</p>
+
+                    <h4>Scene 3: Implementation</h4>
+                    <p><span class="description-text">[Examples of audio description in various media]</span><br>
+                    Various examples show how audio description is implemented in different types of visual content.</p>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Audio Description Script</h3>
+                <p>An audio description script shows exactly what will be spoken during natural pauses in the main audio:</p>
+
+                <div class="audio-description-track">
+                    <p><strong>00:05</strong> - "Animated graphics appear showing accessibility symbols"</p>
+                    <p><strong>00:15</strong> - "Person navigates content using assistive technology"</p>
+                    <p><strong>00:30</strong> - "Split screen demonstrates audio description impact"</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5" aria-labelledby="best-practices">
+            <h2 id="best-practices">Best Practices Summary</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Provide audio descriptions for important visual information</li>
+                        <li class="list-group-item">Include a complete text transcript</li>
+                        <li class="list-group-item">Make descriptions available but toggleable</li>
+                        <li class="list-group-item">Ensure media controls are keyboard accessible</li>
+                        <li class="list-group-item">Include timestamps for synchronization</li>
+                        <li class="list-group-item">Describe all meaningful visual content</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Bootstrap Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Video player functionality
+        const video = document.getElementById('videoWithDescription');
+        const toggleDescription = document.getElementById('toggleDescription');
+        const playPauseBtn = document.getElementById('playPause');
+        const rewindBtn = document.getElementById('rewind');
+        const forwardBtn = document.getElementById('forward');
+
+        // Toggle audio description track
+        toggleDescription.addEventListener('change', function() {
+            const descTrack = video.textTracks[0];
+            descTrack.mode = this.checked ? 'showing' : 'hidden';
+        });
+
+        // Play/Pause
+        playPauseBtn.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        // Rewind 10 seconds
+        rewindBtn.addEventListener('click', function() {
+            video.currentTime = Math.max(video.currentTime - 10, 0);
+        });
+
+        // Forward 10 seconds
+        forwardBtn.addEventListener('click', function() {
+            video.currentTime = Math.min(video.currentTime + 10, video.duration);
+        });
+
+        // Make transcript timestamps clickable
+        document.querySelectorAll('.timestamp').forEach(timestamp => {
+            timestamp.addEventListener('click', function() {
+                const time = this.textContent.split(':');
+                const seconds = parseInt(time[0]) * 60 + parseInt(time[1]);
+                video.currentTime = seconds;
+                video.play();
+            });
+        });
+
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            if (document.activeElement === video) {
+                switch(e.key) {
+                    case ' ':
+                        e.preventDefault();
+                        playPauseBtn.click();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        rewindBtn.click();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        forwardBtn.click();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
