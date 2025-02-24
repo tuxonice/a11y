@@ -1,4 +1,4 @@
-# A11y Bootstrap Demo
+# A11y Demo
 
 This project demonstrates key accessibility principles using Bootstrap CSS framework. Each page showcases different accessibility features and best practices.
 

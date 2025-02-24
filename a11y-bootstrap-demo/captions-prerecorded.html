@@ -23,17 +23,14 @@
         <div class="card-body">
           <h2 class="card-title h4">Example: Video with Captions</h2>
 
-          <!-- Video with captions -->
-          <video class="w-100 mb-3" controls>
-            <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-            <track
-                    kind="captions"
-                    src="captions.vtt"
-                    label="English"
-                    srclang="en"
-                    default>
-            Your browser does not support the video element.
-          </video>
+          <div class="video-section my-4">
+            <video controls class="img-fluid">
+              <source src="media/140111-774507949_tiny.mp4" type="video/mp4">
+              <track src="media/subtitles-en.vtt" kind="subtitles" srclang="en" label="English">
+              <track src="media/subtitles-pt.vtt" kind="subtitles" srclang="pt" label="Português">
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
           <div class="alert alert-info">
             <h3 class="h5">Why Captions Matter:</h3>
