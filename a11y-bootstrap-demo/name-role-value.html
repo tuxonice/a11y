@@ -177,14 +177,6 @@
         <h1>WCAG 4.1.2 Name, Role, Value (Level A)</h1>
         <p class="lead">This page demonstrates how to properly implement name, role, and value for custom interface components.</p>
 
-        <div>
-            <ul>
-                <li><b>Goal</b>: People using assistive technology understand all components.</li>
-                <li><b>What to do</b>: Give components correct names, roles, states, and values</li>
-                <li><b>Why it's important</b>: Assistive technology only works well when code is done properly</li>
-            </ul>
-        </div>
-
         <section class="mb-5" aria-labelledby="custom-controls">
             <h2 id="custom-controls">Custom Form Controls</h2>
             
@@ -492,7 +484,19 @@
 
         function changeTabs(e) {
             const targetTab = e.currentTarget;
-            const targetPanel = document.querySelector(targetTab.getAttribute('aria-controls'));
+            const ariaControls = targetTab.getAttribute('aria-controls');
+            
+            if (!ariaControls) {
+                console.error('Tab is missing aria-controls attribute');
+                return;
+            }
+
+            const targetPanel = document.querySelector(`#${ariaControls}`);
+            
+            if (!targetPanel) {
+                console.error(`Panel with id '${ariaControls}' not found`);
+                return;
+            }
 
             // Deactivate all tabs
             tabs.forEach(tab => {
