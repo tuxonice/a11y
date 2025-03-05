@@ -72,104 +72,127 @@ Provide alternatives for time-based media
 - What to do: Provide a text equivalent for live audio-only content.
 - Why it's important: People who cannot hear or understand real-time audio can read an equivalent.
         
-## 1.3 Adaptable [Create content that can be presented in different ways (for example simpler layout) without losing information or structure.]
+## 1.3 Adaptable 
+
+Create content that can be presented in different ways (for example simpler layout) without losing information or structure.
     
-    1.3.1 Info and Relationships (Level A)
-        - Goal: Information about content structure is available to more people.
-        - What to do: Use code to reinforce relationships and information conveyed through presentation.
-        - Why it's important: People can adapt the presentation to suit their needs while preserving the original meaning.
-        
-    1.3.2 Meaningful Sequence (Level A)
-        - Goal: The order of content can be understood by more people.
-        - What to do: Use code to preserve meaningful content order.
-        - Why it's important: Assistive technology can present content to users in the proper order.
-        
-    1.3.3 Sensory Characteristics (Level A)
-        - Goal: Instructions are understandable by more people.
-        - What to do: Describe controls by name, not just by appearance or location.
-        - Why it's important: People who are blind or have low vision need non-visual instructions.
-        
-    1.3.4 Orientation (Level AA)
-        - Goal: Devices can be used in any orientation.
-        - What to do: Don't lock content to either portrait or landscape presentation.
-        - Why it's important: Wheelchair users and others may have devices mounted in a fixed orientation.
-        
-    1.3.5 Identify Input Purpose (Level AA)
-        - Goal: It is easier to fill out forms.
-        - What to do: Use code to indicate the purpose of common inputs, where technology allows.
-        - Why it's important: Some people with cognitive disabilities may not understand the input's purpose from the label alone.
-        
-    1.3.6 Identify Purpose (Level AAA)
-        - Goal: It is easier to operate and navigate content.
-        - What to do: Use code to indicate the meaning of all controls and other key information, where available.
-        - Why it's important: Some people with cognitive disabilities may not understand a control's purpose from the name alone.
+### 1.3.1 Info and Relationships (Level A)
 
-1.4 Distinguishable [Make it easier for users to see and hear content including separating foreground from background]
-
-    1.4.1 Use of Color (Level A)
-        - Goal: Color is not the only way of distinguishing information.
-        - What to do: Use information in addition to color, such as shape or text, to convey meaning.
-        - Why it's important: Not everyone sees colors or sees them the same way.
-
-    1.4.2 Audio Control (Level A)
-        - Goal: A page that plays music or sounds doesn't disrupt people.
-        - What to do: If you play audio content automatically, let people turn it down or off.
-        - Why it's important: Sound distracts some people, and also interferes with screen readers.
-
-    1.4.3 Contrast (Minimum) (Level AA)
-        - Goal: Text can be seen by more people.
-        - What to do: Provide sufficient contrast between text and its background.
-        - Why it's important: Some people cannot read faint text.
+- Goal: Information about content structure is available to more people.
+- What to do: Use code to reinforce relationships and information conveyed through presentation.
+- Why it's important: People can adapt the presentation to suit their needs while preserving the original meaning.
         
-    1.4.4 Resize Text (Level AA)
-        - Goal: Text can be enlarged.
-        - What to do: Ensure text can be doubled in size.
-        - Why it's important: Some people can only read text when it is bigger.
+###  1.3.2 Meaningful Sequence (Level A)
 
-    1.4.5 Images of Text (Level AA)
-        - Goal: Users can adjust how text is presented.
-        - What to do: Use text instead of pictures of text.
-        - Why it's important: People cannot alter how text looks in images.
+- Goal: The order of content can be understood by more people.
+- What to do: Use code to preserve meaningful content order.
+- Why it's important: Assistive technology can present content to users in the proper order.
+        
+### 1.3.3 Sensory Characteristics (Level A)
 
-    1.4.6 Contrast (Enhanced) (Level AAA)
-        - Goal: Text can be seen by people who need strong contrast.
-        - What to do: Strongly contrast text against its background.
-        - Why it's important: Some people cannot read text with minimum contrast.
+- Goal: Instructions are understandable by more people.
+- What to do: Describe controls by name, not just by appearance or location.
+- Why it's important: People who are blind or have low vision need non-visual instructions.
         
-    1.4.7 Low or No Background Audio (Level AAA)
-        - Goal: Prerecorded speech is not disrupted by background sound.
-        - What to do: Avoid or lessen background sound, or let users turn it off.
-        - Why it's important: People who are hard of hearing may have difficulty distinguishing speech from music and other sounds.
+### 1.3.4 Orientation (Level AA)
 
-    1.4.8 Visual Presentation (Level AAA)
-        - Goal: Text appearance can be altered by users to meet preferences.
-        - What to do: Meet text display requirements or allow users to adjust them.
-        - Why it's important: Some text formats are more readable for people with cognitive disabilities and low vision.
+- Goal: Devices can be used in any orientation.
+- What to do: Don't lock content to either portrait or landscape presentation.
+- Why it's important: Wheelchair users and others may have devices mounted in a fixed orientation.
         
-    1.4.9 Images of Text (No Exception) (Level AAA)
-        Goal: Users can always adjust how text is presented.
-        What to do: Do not use pictures of text unless there is no other way to present information.
-        Why it's important: People cannot alter how text looks in images.
-        
-    1.4.10 Reflow (Level AA)
-        - Goal: Content can be enlarged without increasing line length.
-        - What to do: Make lines of text reflow within the viewport.
-        - Why it's important: People who need bigger text find it difficult if they must scroll to read long lines.
+### 1.3.5 Identify Input Purpose (Level AA)
 
-    1.4.11 Non-text Contrast (Level AA)
-        - Goal: Important visual information meets the same minimum contrast required for larger text.
-        - What to do: Ensure meaningful visual cues achieve 3:1 against the background.
-        - Why it's important: Some people cannot see elements with low contrast.
+- Goal: It is easier to fill out forms.
+- What to do: Use code to indicate the purpose of common inputs, where technology allows.
+- Why it's important: Some people with cognitive disabilities may not understand the input's purpose from the label alone.
         
-    1.4.12 Text Spacing (Level AA)
-        - Goal: Users can adjust text spacing to make it easier to read.
-        - Author task: Ensure content adapts to user-defined text settings.
-        - Why it's important: Some people need text with different spacing or font characteristics.
+### 1.3.6 Identify Purpose (Level AAA)
+
+- Goal: It is easier to operate and navigate content.
+- What to do: Use code to indicate the meaning of all controls and other key information, where available.
+- Why it's important: Some people with cognitive disabilities may not understand a control's purpose from the name alone.
+
+## 1.4 Distinguishable 
+
+Make it easier for users to see and hear content including separating foreground from background
+
+### 1.4.1 Use of Color (Level A)
+
+- Goal: Color is not the only way of distinguishing information.
+- What to do: Use information in addition to color, such as shape or text, to convey meaning.
+- Why it's important: Not everyone sees colors or sees them the same way.
+
+### 1.4.2 Audio Control (Level A)
+
+- Goal: A page that plays music or sounds doesn't disrupt people.
+- What to do: If you play audio content automatically, let people turn it down or off.
+- Why it's important: Sound distracts some people, and also interferes with screen readers.
+
+### 1.4.3 Contrast (Minimum) (Level AA)
+
+- Goal: Text can be seen by more people.
+- What to do: Provide sufficient contrast between text and its background.
+- Why it's important: Some people cannot read faint text.
         
-    1.4.13 Content on Hover or Focus (Level AA)
-        - Goal: More users can perceive and dismiss non-persistent content.
-        - What to do: If hover or focus causes content changes, ensure interaction is predictable.
-        - Why it's important: Unpredictable temporary content can be hard for some to consume and may disrupt others.
+### 1.4.4 Resize Text (Level AA)
+
+- Goal: Text can be enlarged.
+- What to do: Ensure text can be doubled in size.
+- Why it's important: Some people can only read text when it is bigger.
+
+### 1.4.5 Images of Text (Level AA)
+
+- Goal: Users can adjust how text is presented.
+- What to do: Use text instead of pictures of text.
+- Why it's important: People cannot alter how text looks in images.
+
+### 1.4.6 Contrast (Enhanced) (Level AAA)
+
+- Goal: Text can be seen by people who need strong contrast.
+- What to do: Strongly contrast text against its background.
+- Why it's important: Some people cannot read text with minimum contrast.
+        
+### 1.4.7 Low or No Background Audio (Level AAA)
+
+- Goal: Prerecorded speech is not disrupted by background sound.
+- What to do: Avoid or lessen background sound, or let users turn it off.
+- Why it's important: People who are hard of hearing may have difficulty distinguishing speech from music and other sounds.
+
+### 1.4.8 Visual Presentation (Level AAA)
+
+- Goal: Text appearance can be altered by users to meet preferences.
+- What to do: Meet text display requirements or allow users to adjust them.
+- Why it's important: Some text formats are more readable for people with cognitive disabilities and low vision.
+        
+### 1.4.9 Images of Text (No Exception) (Level AAA)
+
+- Goal: Users can always adjust how text is presented.
+- What to do: Do not use pictures of text unless there is no other way to present information.
+- Why it's important: People cannot alter how text looks in images.
+        
+### 1.4.10 Reflow (Level AA)
+
+- Goal: Content can be enlarged without increasing line length.
+- What to do: Make lines of text reflow within the viewport.
+- Why it's important: People who need bigger text find it difficult if they must scroll to read long lines.
+
+### 1.4.11 Non-text Contrast (Level AA)
+
+- Goal: Important visual information meets the same minimum contrast required for larger text.
+- What to do: Ensure meaningful visual cues achieve 3:1 against the background.
+- Why it's important: Some people cannot see elements with low contrast.
+        
+### 1.4.12 Text Spacing (Level AA)
+
+- Goal: Users can adjust text spacing to make it easier to read.
+- Author task: Ensure content adapts to user-defined text settings.
+- Why it's important: Some people need text with different spacing or font characteristics.
+        
+### 1.4.13 Content on Hover or Focus (Level AA)
+
+- Goal: More users can perceive and dismiss non-persistent content.
+- What to do: If hover or focus causes content changes, ensure interaction is predictable.
+- Why it's important: Unpredictable temporary content can be hard for some to consume and may disrupt others.
 
 # Operable
 
@@ -177,146 +200,182 @@ Provide alternatives for time-based media
 This means that users should be able to interact with and navigate the content using various methods, such as a keyboard, mouse, or assistive technologies. 
 The aim is to ensure that all users can easily operate and interact with web content.
 
-2.1 Keyboard Accessible [Make all functionality available from a keyboard.]
+2.1 Keyboard Accessible
+
+Make all functionality available from a keyboard.
     
-    2.1.1 Keyboard (Level A)
-        - Goal: Everything can be done with a keyboard except freehand movements.
-        - What to do: Ensure pointer actions have a keyboard equivalent.
-        - Why it's important: Many people rely on the keyboard interface, including blind and some mobility impaired people.
+### 2.1.1 Keyboard (Level A)
 
-    2.1.2 No Keyboard Trap (Level A)
-        - Goal: Keyboard users don't get stuck.
-        - What to do: Ensure users always know how to navigate away from components.
-        - Why it's important: People who rely on the keyboard often have no other means to navigate.
-        
-    2.1.3 Keyboard (No Exception) (Level AAA)
-        - Goal: Everything can be done with a keyboard.
-        - What to do: Ensure all pointer actions have a keyboard equivalent.
-        - Why it's important: People who can only use the keyboard interface need to be able to accomplish everything.
-        
-    2.1.4 Character Key Shortcuts (Level A)
-        - Goal: Reduce accidental activation of keyboard shortcuts.
-        - What to do: Ensure character-only shortcut keys can be turned off or modified.
-        - Why it's important: Character-key shortcuts are easy to accidentally trigger, especially with speech input.
-        
-2.2 Enough Time [Provide users enough time to read and use content.]
+- Goal: Everything can be done with a keyboard except freehand movements.
+- What to do: Ensure pointer actions have a keyboard equivalent.
+- Why it's important: Many people rely on the keyboard interface, including blind and some mobility impaired people.
 
-    2.2.1 Timing Adjustable (Level A)
-        - Goal: Users have adequate time to complete tasks.
-        - What to do: Let users turn off, adjust, or extend time limits.
-        - Why it's important: People with disabilities may need more time to complete activities.
-        
-    2.2.2 Pause, Stop, Hide (Level A)
-        - Goal: Fewer users are distracted by content that updates or moves.
-        - What to do: Let users control content changes that occur in parallel with other content.
-        - Why it's important: Some people with cognitive disabilities and attention deficits are distracted by continuous movement.
+### 2.1.2 No Keyboard Trap (Level A)
 
-    2.2.3 No Timing (Level AAA)
-        - Goal: Users do not face time limits.
-        - What to do: Do not use time limits, except for video and live events.
-        - Why it's important: People with disabilities often need more time to complete actions.
+- Goal: Keyboard users don't get stuck.
+- What to do: Ensure users always know how to navigate away from components.
+- Why it's important: People who rely on the keyboard often have no other means to navigate.
+        
+### 2.1.3 Keyboard (No Exception) (Level AAA)
 
-    2.2.4 Interruptions (Level AAA)
-        - Goal: Users are not interrupted.
-        - What to do: Let people delay or turn off updates, except in emergencies.
-        - Why it's important: Updates distract and disrupt assistive technology users and people with attention deficits.
+- Goal: Everything can be done with a keyboard.
+- What to do: Ensure all pointer actions have a keyboard equivalent.
+- Why it's important: People who can only use the keyboard interface need to be able to accomplish everything.
         
-    2.2.5 Re-authenticating (Level AAA)
-        - Goal: Users do not lose information or context due to reauthentication.
-        - What to do: Preserve users' prior activity and data through reauthentication.
-        - Why it's important: Some people may require additional time to complete an activity.
+### 2.1.4 Character Key Shortcuts (Level A)
+
+- Goal: Reduce accidental activation of keyboard shortcuts.
+- What to do: Ensure character-only shortcut keys can be turned off or modified.
+- Why it's important: Character-key shortcuts are easy to accidentally trigger, especially with speech input.
         
-    2.2.6 Timeouts (Level AAA)
-        - Goal: Users do not lose data due to unknown timeouts.
-        - Author task: Tell users how long their session can be inactive before they may lose information.
-        - Why it's important: People with disabilities may need more time to complete actions.
+## 2.2 Enough Time
+
+Provide users enough time to read and use content.
+
+### 2.2.1 Timing Adjustable (Level A)
+
+- Goal: Users have adequate time to complete tasks.
+- What to do: Let users turn off, adjust, or extend time limits.
+- Why it's important: People with disabilities may need more time to complete activities.
+        
+### 2.2.2 Pause, Stop, Hide (Level A)
+
+- Goal: Fewer users are distracted by content that updates or moves.
+- What to do: Let users control content changes that occur in parallel with other content.
+- Why it's important: Some people with cognitive disabilities and attention deficits are distracted by continuous movement.
+
+### 2.2.3 No Timing (Level AAA)
+
+- Goal: Users do not face time limits.
+- What to do: Do not use time limits, except for video and live events.
+- Why it's important: People with disabilities often need more time to complete actions.
+
+### 2.2.4 Interruptions (Level AAA)
+
+- Goal: Users are not interrupted.
+- What to do: Let people delay or turn off updates, except in emergencies.
+- Why it's important: Updates distract and disrupt assistive technology users and people with attention deficits.
+        
+### 2.2.5 Re-authenticating (Level AAA)
+
+- Goal: Users do not lose information or context due to reauthentication.
+- What to do: Preserve users' prior activity and data through reauthentication.
+- Why it's important: Some people may require additional time to complete an activity.
+        
+### 2.2.6 Timeouts (Level AAA)
+- 
+- Goal: Users do not lose data due to unknown timeouts.
+- Author task: Tell users how long their session can be inactive before they may lose information.
+- Why it's important: People with disabilities may need more time to complete actions.
     
-2.3 Seizures and Physical Reactions [Do not design content in a way that is known to cause seizures or physical reactions.]
+## 2.3 Seizures and Physical Reactions
 
-    2.3.1 Three Flashes or Below Threshold (Level A)
-        - Goal: Content does not trigger seizures.
-        - What to do: Avoid content that flashes, or keep it under thresholds.
-        - Why it's important: Flashing content can cause migraines, dizziness, nausea, and seizures.
+Do not design content in a way that is known to cause seizures or physical reactions.
+
+### 2.3.1 Three Flashes or Below Threshold (Level A)
+
+- Goal: Content does not trigger seizures.
+- What to do: Avoid content that flashes, or keep it under thresholds.
+- Why it's important: Flashing content can cause migraines, dizziness, nausea, and seizures.
         
-    2.3.2 Three Flashes (Level AAA)
-        - Goal: Content does not trigger seizures.
-        - What to do: Do not flash content more than 3 times a second.
-        - Why it's important: Flashing content can cause migraines, dizziness, nausea, and seizures.
+### 2.3.2 Three Flashes (Level AAA)
+
+- Goal: Content does not trigger seizures.
+- What to do: Do not flash content more than 3 times a second.
+- Why it's important: Flashing content can cause migraines, dizziness, nausea, and seizures.
 
 
-    2.3.3 Animation from Interactions (Level AAA)
-        - Goal: Users are not harmed or distracted by motion.
-        - What to do: Support user preferences for motion, and eliminate unnecessary motion effects.
-        - Why it's important: People can get sick from motion effects.
+### 2.3.3 Animation from Interactions (Level AAA)
+
+- Goal: Users are not harmed or distracted by motion.
+- What to do: Support user preferences for motion, and eliminate unnecessary motion effects.
+- Why it's important: People can get sick from motion effects.
         
-2.4 Navigable [Provide ways to help users navigate, find content, and determine where they are.]
+## 2.4 Navigable
+
+Provide ways to help users navigate, find content, and determine where they are.
     
-    2.4.1 Bypass Blocks (Level A)
-        - Goal: Users can more easily navigate by keyboard.
-        - What to do: Provide a means of skipping repeating content.
-        - Why it's important: Users reliant on the keyboard interface can move around pages efficiently.
-        
-    2.4.2 Page Titled (Level A)
-        - Goal: Each web page has a meaningful title.
-        - What to do: Provide a descriptive page title using appropriate technology.
-        - Why it's important: Page titles help users identify and distinguish different pages.
-        
-    2.4.3 Focus Order (Level A)
-        - Goal: Keyboard users navigate content in a correct order.
-        - What to do: Elements receive focus in an order that preserves meaning.
-        - Why it's important: Navigating a site or application with only the keyboard will make sense.
-        
-    2.4.4 Link Purpose (In Context) (Level A)
-        - Goal: Users understand what each link will do.
-        - What to do: Provide descriptive names or context for all links.
-        - Why it's important: People with visual and cognitive disabilities can navigate more easily.
-        
-    2.4.5 Multiple Ways (Level AA)
-        - Goal: Users can get to content in multiple ways.
-        - What to do: Provide at least two options for reaching the same content.
-        - Why it's important: Not everyone can navigate content in the same way.
-        
-    2.4.6 Headings and Labels (Level AA)
-        - Goal: A page's content is described in headings and labels
-        - What to do: Provide descriptive headings and labels
-        - Why it's important: People can orient themselves, especially those with cognitive or visual disabilities.
-        
-    2.4.7 Focus Visible (Level AA)
-        - Goal: Users know which element has keyboard focus.
-        - What to do: Ensure each item receiving focus has a visible indicator.
-        - Why it's important: Without a focus indicator, sighted keyboard users cannot operate the page.
-        
-    2.4.8 Location (Level AAA)
-        - Goal: Users know where they are in a set of pages.
-        - What to do: Use breadcrumbs, site maps, or other indicators to give context.
-        - Why it's important: Location indicators reduce confusion for people with cognitive disabilities.
-        
-    2.4.9 Link Purpose (Link Only) (Level AAA)
-        - Goal: Users understand what each link will do.
-        - What to do: Provide descriptive names for all links.
-        - Why it's important: Descriptive link text is more understandable for all users, especially when using assistive technology.
-        
-    2.4.10 Section Headings (Level AAA)
-        - Goal: Users understand how content is organized in sections.
-        - What to do: Where content is organized in sections, provide section headings.
-        - Why it's important: People can orient themselves, especially those with cognitive or visual disabilities.
-        
-    2.4.11 Focus Not Obscured (Minimum) (Level AA)
-        - Goal: Keep the focused item visible.
-        - What to do: Ensure when an item gets keyboard focus, it is at least partially visible.
-        - Why it's important: People who can't use a mouse need to see what has keyboard focus.
+### 2.4.1 Bypass Blocks (Level A)
 
-    2.4.12 Focus Not Obscured (Enhanced) (Level AAA)
-        - Goal: Don't cover any part of the item with focus.
-        - What to do: Ensure when an item gets keyboard focus, it is fully visible.
-        - Why it's important: People who can't use a mouse need to see what has keyboard focus.
+- Goal: Users can more easily navigate by keyboard.
+- What to do: Provide a means of skipping repeating content.
+- Why it's important: Users reliant on the keyboard interface can move around pages efficiently.
         
-    2.4.13 Focus Appearance (Level AAA)
-        - Goal: Make it easier to spot the keyboard focus.
-        - What to do: Use a focus indicator of sufficient size and contrast.
-        - Why it's important: Many people can't see small changes in visual appearance, including older people.
+### 2.4.2 Page Titled (Level A)
+
+- Goal: Each web page has a meaningful title.
+- What to do: Provide a descriptive page title using appropriate technology.
+- Why it's important: Page titles help users identify and distinguish different pages.
         
-2.5 Input Modalities [Make it easier for users to operate functionality through various inputs beyond keyboard.]
+### 2.4.3 Focus Order (Level A)
+
+- Goal: Keyboard users navigate content in a correct order.
+- What to do: Elements receive focus in an order that preserves meaning.
+- Why it's important: Navigating a site or application with only the keyboard will make sense.
+        
+### 2.4.4 Link Purpose (In Context) (Level A)
+
+- Goal: Users understand what each link will do.
+- What to do: Provide descriptive names or context for all links.
+- Why it's important: People with visual and cognitive disabilities can navigate more easily.
+        
+### 2.4.5 Multiple Ways (Level AA)
+
+- Goal: Users can get to content in multiple ways.
+- What to do: Provide at least two options for reaching the same content.
+- Why it's important: Not everyone can navigate content in the same way.
+        
+### 2.4.6 Headings and Labels (Level AA)
+
+- Goal: A page's content is described in headings and labels
+- What to do: Provide descriptive headings and labels
+- Why it's important: People can orient themselves, especially those with cognitive or visual disabilities.
+        
+### 2.4.7 Focus Visible (Level AA)
+
+- Goal: Users know which element has keyboard focus.
+- What to do: Ensure each item receiving focus has a visible indicator.
+- Why it's important: Without a focus indicator, sighted keyboard users cannot operate the page.
+        
+### 2.4.8 Location (Level AAA)
+
+- Goal: Users know where they are in a set of pages.
+- What to do: Use breadcrumbs, site maps, or other indicators to give context.
+- Why it's important: Location indicators reduce confusion for people with cognitive disabilities.
+        
+### 2.4.9 Link Purpose (Link Only) (Level AAA)
+
+- Goal: Users understand what each link will do.
+- What to do: Provide descriptive names for all links.
+- Why it's important: Descriptive link text is more understandable for all users, especially when using assistive technology.
+        
+### 2.4.10 Section Headings (Level AAA)
+
+- Goal: Users understand how content is organized in sections.
+- What to do: Where content is organized in sections, provide section headings.
+- Why it's important: People can orient themselves, especially those with cognitive or visual disabilities.
+        
+### 2.4.11 Focus Not Obscured (Minimum) (Level AA)
+
+- Goal: Keep the focused item visible.
+- What to do: Ensure when an item gets keyboard focus, it is at least partially visible.
+- Why it's important: People who can't use a mouse need to see what has keyboard focus.
+
+### 2.4.12 Focus Not Obscured (Enhanced) (Level AAA)
+
+- Goal: Don't cover any part of the item with focus.
+- What to do: Ensure when an item gets keyboard focus, it is fully visible.
+- Why it's important: People who can't use a mouse need to see what has keyboard focus.
+        
+### 2.4.13 Focus Appearance (Level AAA)
+
+- Goal: Make it easier to spot the keyboard focus.
+- What to do: Use a focus indicator of sufficient size and contrast.
+- Why it's important: Many people can't see small changes in visual appearance, including older people.
+        
+## 2.5 Input Modalities 
+
+Make it easier for users to operate functionality through various inputs beyond keyboard.
 
     2.5.1 Pointer Gestures (Level A)
         - Goal: Let users operate touchscreens with one finger and reduced gestures.
