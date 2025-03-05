@@ -377,45 +377,53 @@ Provide ways to help users navigate, find content, and determine where they are.
 
 Make it easier for users to operate functionality through various inputs beyond keyboard.
 
-    2.5.1 Pointer Gestures (Level A)
-        - Goal: Let users operate touchscreens with one finger and reduced gestures.
-        - What to do: Provide single-point operation for all functions.
-        - Why it's important: Not everyone can perform complex and multi-touch gestures.
-        
-    2.5.2 Pointer Cancellation (Level A)
-        - Goal: Reduce accidental activation of controls by mouse or touch.
-        - What to do: Make pointer cancellation predictable and consistent.
-        - Why it's important: Make it easier for anyone to recover from something they didn’t mean to do.
-        
-    2.5.3 Label in Name (Level A)
-        - Goal: The visual label for controls is a trigger for speech activation.
-        - What to do: Where practical, make the control’s text label and name match.
-        - Why it's important: People who operate with voice interaction use the visible labels in their commands.
-        
-    2.5.4 Motion Actuation (Level A)
-        - Goal: Content is not dependent on a user's ability to move a device.
-        - What to do: Don't rely solely on device motion to control page content.
-        - Why it's important: Some people cannot hold or move a device steadily.
-        
-    2.5.5 Target Size (Enhanced) (Level AAA)
-        - Goal: Controls can be operated more easily, especially on touch screens.
-        - What to do: Make custom targets at least 44 by 44 pixels.
-        - Why it's important: Some people cannot tap small objects.
-        
-    2.5.6 Concurrent Input Mechanisms (Level AAA)
-        - Goal: Users can choose different ways of inputting content.
-        - What to do: Do not prevent users from switching their mode of input.
-        - Why it's important: People may not be able to work using just one input method.
-        
-    2.5.7 Dragging Movements (Level AA)
-        - Goal: Don’t rely on dragging for user actions.
-        - What to do: For any action that involves dragging, provide a simple pointer alternative.
-        - Why it's important: Some people cannot use a mouse to drag items.
+### 2.5.1 Pointer Gestures (Level A)
 
-    2.5.8 Target Size (Minimum) (Level AA)
-        - Goal: Make controls easier to activate.
-        - What to do: Ensure targets meet a minimum size or have sufficient spacing around them.
-        - Why it's important: Some people with physical impairments cannot click small buttons that are close together.
+- Goal: Let users operate touchscreens with one finger and reduced gestures.
+- What to do: Provide single-point operation for all functions.
+- Why it's important: Not everyone can perform complex and multi-touch gestures.
+        
+### 2.5.2 Pointer Cancellation (Level A)
+
+- Goal: Reduce accidental activation of controls by mouse or touch.
+- What to do: Make pointer cancellation predictable and consistent.
+- Why it's important: Make it easier for anyone to recover from something they didn’t mean to do.
+        
+### 2.5.3 Label in Name (Level A)
+
+- Goal: The visual label for controls is a trigger for speech activation.
+- What to do: Where practical, make the control’s text label and name match.
+- Why it's important: People who operate with voice interaction use the visible labels in their commands.
+        
+### 2.5.4 Motion Actuation (Level A)
+
+- Goal: Content is not dependent on a user's ability to move a device.
+- What to do: Don't rely solely on device motion to control page content.
+- Why it's important: Some people cannot hold or move a device steadily.
+        
+### 2.5.5 Target Size (Enhanced) (Level AAA)
+
+- Goal: Controls can be operated more easily, especially on touch screens.
+- What to do: Make custom targets at least 44 by 44 pixels.
+- Why it's important: Some people cannot tap small objects.
+        
+### 2.5.6 Concurrent Input Mechanisms (Level AAA)
+
+- Goal: Users can choose different ways of inputting content.
+- What to do: Do not prevent users from switching their mode of input.
+- Why it's important: People may not be able to work using just one input method.
+        
+### 2.5.7 Dragging Movements (Level AA)
+
+- Goal: Don’t rely on dragging for user actions.
+- What to do: For any action that involves dragging, provide a simple pointer alternative.
+- Why it's important: Some people cannot use a mouse to drag items.
+
+### 2.5.8 Target Size (Minimum) (Level AA)
+
+- Goal: Make controls easier to activate.
+- What to do: Ensure targets meet a minimum size or have sufficient spacing around them.
+- Why it's important: Some people with physical impairments cannot click small buttons that are close together.
 
 # Understandable
 
@@ -423,134 +431,164 @@ Make it easier for users to operate functionality through various inputs beyond 
 This involves ensuring that text is readable and understandable, making content appear and operate in predictable ways, and helping users avoid and correct mistakes. 
 For example, using clear and simple language, providing consistent navigation, and offering error messages that help users understand and fix input errors are essential practices.
 
-3.1 Readable [Make text content readable and understandable.]
+## 3.1 Readable
+
+Make text content readable and understandable.
     
-    3.1.1 Language of Page (Level A)
-        - Goal: Assistive technology can determine the language of a page.
-        - What to do: Indicate the predominant language on a page.
-        - Why it's important: People using assistive technology get information in the correct language.
+### 3.1.1 Language of Page (Level A)
 
-    3.1.2 Language of Parts (Level AA)
-        - Goal: Assistive technology can identify the languages used within a page.
-        - What to do: Indicate when words are in a different language.
-        - Why it's important: People using assistive technology get information in the correct language.
-        
-    3.1.3 Unusual Words (Level AAA)
-        - Goal: Users can identify and learn what unusual words mean.
-        - What to do: Provide definitions for technical jargon and unusual terms.
-        - Why it's important: More people, especially those with cognitive disabilities, can understand the meaning of content.
+- Goal: Assistive technology can determine the language of a page.
+- What to do: Indicate the predominant language on a page.
+- Why it's important: People using assistive technology get information in the correct language.
 
-    3.1.4 Abbreviations (Level AAA)
-        - Goal: Users can identify and learn what abbreviations mean.
-        - What to do: Provide the expanded form of abbreviations to users.
-        - Why it's important: Some people, including those with cognitive disabilities, may not understand the shortened form of words.
-        
-    3.1.5 Reading Level (Level AAA)
-        - Goal: Users can get a simplified version of complex information.
-        - What to do: When text information becomes complex, create a more easily understood version.
-        - Why it's important: More people, especially those with cognitive disabilities, can understand the meaning of content.
-        
-    3.1.6 Pronunciation (Level AAA)
-        - Goal: Users can identify the pronunciation of ambiguous words.
-        - What to do: Indicate how to pronounce a word, where its meaning is otherwise unclear.
-        - Why it's important: Some people, including those with cognitive disabilities, may not understand the meaning of content.
-        
-3.2 Predictable [Make web pages appear and operate in predictable ways.]
+### 3.1.2 Language of Parts (Level AA)
 
-    3.2.1 On Focus (Level A)
-        - Goal: Content can be navigated more predictably.
-        - What to do: Do not change a user's context when items get focus.
-        - Why it's important: Content that behaves predictably is especially important to people with disabilities.
+- Goal: Assistive technology can identify the languages used within a page.
+- What to do: Indicate when words are in a different language.
+- Why it's important: People using assistive technology get information in the correct language.
         
-    3.2.2 On Input (Level A)
-        - Goal: Content can be operated more predictably.
-        - What to do: Forewarn users if their context will change based on their input.
-        - Why it's important: Content that behaves predictably is especially important to people with disabilities.
-        
-    3.2.3 Consistent Navigation (Level AA)
-        - Goal: Content can be navigated more predictably.
-        - What to do: Consistently order navigation that repeats across multiple pages.
-        - Why it's important: Content that behaves predictably is especially important to people with disabilities.
+### 3.1.3 Unusual Words (Level AAA)
 
-    3.2.4 Consistent Identification (Level AA)
-        - Goal: Actions are more predictable across pages.
-        - What to do: Identify repeating functions consistently.
-        - Why it's important: Consistently identified actions are especially important to people with disabilities.
-        
-    3.2.5 Change on Request (Level AAA)
-        - Goal: Users have full control of major content changes.
-        - What to do: Provide ways for users to trigger or turn off changes of context.
-        - Why it's important: Content that behaves predictably is especially important to people with disabilities.
-        
-    3.2.6 Consistent Help (Level A)
-        - Goal: Make it easier to find help and support.
-        - What to do: Put help in the same place when it is on multiple pages.
-        - Why it's important: People who need help can find it more easily if it's in the same place.
-        
-3.3 Input Assistance [Help users avoid and correct mistakes.]
+- Goal: Users can identify and learn what unusual words mean.
+- What to do: Provide definitions for technical jargon and unusual terms.
+- Why it's important: More people, especially those with cognitive disabilities, can understand the meaning of content.
 
-    3.3.1 Error Identification (Level A)
-        - Goal: Users know an error exists and what is wrong.
-        - What to do: Provide descriptive notification of errors.
-        - Why it's important: Flagging errors helps people with reduced sight and cognitive disabilities resolve them.
+### 3.1.4 Abbreviations (Level AAA)
 
-    3.3.2 Labels or Instructions (Level A)
-        - Goal: Users know what information to enter.
-        - What to do: Provide labels or instructions for inputs.
-        - Why it's important: Everyone, especially those with cognitive disabilities, will know how to respond.
+- Goal: Users can identify and learn what abbreviations mean.
+- What to do: Provide the expanded form of abbreviations to users.
+- Why it's important: Some people, including those with cognitive disabilities, may not understand the shortened form of words.
         
-    3.3.3 Error Suggestion (Level AA)
-        - Goal: Users get suggestions on how to resolve errors.
-        - What to do: Where errors are detected, suggest known ways to correct them.
-        - Why it's important: People can address errors faster and with reduced effort.
-        
-    3.3.4 Error Prevention (Legal, Financial, Data) (Level AA)
-        - Goal: Users can avoid submitting incorrect important information.
-        - What to do: Provide ways for users to confirm, correct, or reverse important submissions.
-        - Why it's important: People with disabilities may be more likely to make mistakes, or not notice them.
+### 3.1.5 Reading Level (Level AAA)
 
-    3.3.5 Help (Level AAA)
-        - Goal: Users can avoid making mistakes.
-        - What to do: Provide help to users on the function currently being performed.
-        - Why it's important: People with cognitive or other disabilities can complete their tasks more easily.
+- Goal: Users can get a simplified version of complex information.
+- What to do: When text information becomes complex, create a more easily understood version.
+- Why it's important: More people, especially those with cognitive disabilities, can understand the meaning of content.
         
-    3.3.6 Error Prevention (All) (Level AAA)
-        - Goal: Users can avoid submitting incorrect information.
-        - What to do: Provide ways for users to confirm, correct, or reverse any submissions.
-        - Why it's important: People with disabilities may be more likely to make mistakes, or not notice them.
+### 3.1.6 Pronunciation (Level AAA)
 
-    3.3.7 Redundant Entry (Level A)
-        - Goal: Make it easier for users to complete multi-step processes.
-        - What to do: Don't ask for the same information twice in the same session.
-        - Why it's important: Some people with cognitive disabilities have difficulty remembering what they entered before.
+- Goal: Users can identify the pronunciation of ambiguous words.
+- What to do: Indicate how to pronounce a word, where its meaning is otherwise unclear.
+- Why it's important: Some people, including those with cognitive disabilities, may not understand the meaning of content.
         
-    3.3.8 Accessible Authentication (Minimum) (Level AA)
-        - Goal: Make logins possible with less mental effort.
-        - What to do: Don't make people solve, recall, or transcribe something to log in.
-        - Why it's important: Some people with cognitive disabilities cannot solve puzzles, memorize a username and password, or retype one-time passcodes.
+## 3.2 Predictable
+
+Make web pages appear and operate in predictable ways.
+
+### 3.2.1 On Focus (Level A)
+
+- Goal: Content can be navigated more predictably.
+- What to do: Do not change a user's context when items get focus.
+- Why it's important: Content that behaves predictably is especially important to people with disabilities.
         
-    3.3.9 Accessible Authentication (Enhanced) (Level AAA)
-        - Goal: Make logins possible with less mental effort.
-        - What to do: Don't make people recognize objects or user-supplied images and media to login.
-        - Why it's important: Some people with cognitive disabilities can't do puzzles, including identifying objects and non-text information they previously supplied.
+### 3.2.2 On Input (Level A)
+
+- Goal: Content can be operated more predictably.
+- What to do: Forewarn users if their context will change based on their input.
+- Why it's important: Content that behaves predictably is especially important to people with disabilities.
+        
+### 3.2.3 Consistent Navigation (Level AA)
+
+- Goal: Content can be navigated more predictably.
+- What to do: Consistently order navigation that repeats across multiple pages.
+- Why it's important: Content that behaves predictably is especially important to people with disabilities.
+
+### 3.2.4 Consistent Identification (Level AA)
+
+- Goal: Actions are more predictable across pages.
+- What to do: Identify repeating functions consistently.
+- Why it's important: Consistently identified actions are especially important to people with disabilities.
+        
+### 3.2.5 Change on Request (Level AAA)
+
+- Goal: Users have full control of major content changes.
+- What to do: Provide ways for users to trigger or turn off changes of context.
+- Why it's important: Content that behaves predictably is especially important to people with disabilities.
+        
+### 3.2.6 Consistent Help (Level A)
+
+- Goal: Make it easier to find help and support.
+- What to do: Put help in the same place when it is on multiple pages.
+- Why it's important: People who need help can find it more easily if it's in the same place.
+        
+## 3.3 Input Assistance
+
+Help users avoid and correct mistakes.
+
+## 3.3.1 Error Identification (Level A)
+
+- Goal: Users know an error exists and what is wrong.
+- What to do: Provide descriptive notification of errors.
+- Why it's important: Flagging errors helps people with reduced sight and cognitive disabilities resolve them.
+
+### 3.3.2 Labels or Instructions (Level A)
+
+- Goal: Users know what information to enter.
+- What to do: Provide labels or instructions for inputs.
+- Why it's important: Everyone, especially those with cognitive disabilities, will know how to respond.
+        
+### 3.3.3 Error Suggestion (Level AA)
+
+- Goal: Users get suggestions on how to resolve errors.
+- What to do: Where errors are detected, suggest known ways to correct them.
+- Why it's important: People can address errors faster and with reduced effort.
+        
+### 3.3.4 Error Prevention (Legal, Financial, Data) (Level AA)
+
+- Goal: Users can avoid submitting incorrect important information.
+- What to do: Provide ways for users to confirm, correct, or reverse important submissions.
+- Why it's important: People with disabilities may be more likely to make mistakes, or not notice them.
+
+### 3.3.5 Help (Level AAA)
+
+- Goal: Users can avoid making mistakes.
+- What to do: Provide help to users on the function currently being performed.
+- Why it's important: People with cognitive or other disabilities can complete their tasks more easily.
+        
+### 3.3.6 Error Prevention (All) (Level AAA)
+
+- Goal: Users can avoid submitting incorrect information.
+- What to do: Provide ways for users to confirm, correct, or reverse any submissions.
+- Why it's important: People with disabilities may be more likely to make mistakes, or not notice them.
+
+### 3.3.7 Redundant Entry (Level A)
+
+- Goal: Make it easier for users to complete multi-step processes.
+- What to do: Don't ask for the same information twice in the same session.
+- Why it's important: Some people with cognitive disabilities have difficulty remembering what they entered before.
+        
+### 3.3.8 Accessible Authentication (Minimum) (Level AA)
+
+- Goal: Make logins possible with less mental effort.
+- What to do: Don't make people solve, recall, or transcribe something to log in.
+- Why it's important: Some people with cognitive disabilities cannot solve puzzles, memorize a username and password, or retype one-time passcodes.
+        
+### 3.3.9 Accessible Authentication (Enhanced) (Level AAA)
+
+- Goal: Make logins possible with less mental effort.
+- What to do: Don't make people recognize objects or user-supplied images and media to login.
+- Why it's important: Some people with cognitive disabilities can't do puzzles, including identifying objects and non-text information they previously supplied.
 
 # Robust
 
 "Robust" refers to the principle that content must be robust enough to be reliably interpreted by a wide variety of user agents, including assistive technologies. 
 This means ensuring that web content is compatible with current and future technologies. Key practices include using clean, standard-compliant code and providing proper markup so that assistive technologies can accurately interpret and interact with the content.
 
-4.1 Compatible [Maximize compatibility with current and future user agents, including assistive technologies.]
+## 4.1 Compatible
 
-    4.1.1 Parsing (Obsolete and removed)
+Maximize compatibility with current and future user agents, including assistive technologies.
 
-    4.1.2 Name, Role, Value (Level A)
-        - Goal: People using assistive technology understand all components.
-        - What to do: Give components correct names, roles, states, and values.
-        - Why it's important: Assistive technology only works well when code is done properly.
+### 4.1.1 Parsing (Obsolete and removed)
+
+### 4.1.2 Name, Role, Value (Level A)
+
+- Goal: People using assistive technology understand all components.
+- What to do: Give components correct names, roles, states, and values.
+- Why it's important: Assistive technology only works well when code is done properly.
     
-    4.1.3 Status Messages (Level AA)
-        - Goal: Make users aware of important changes in content.
-        - What to do: Let assistive technology notify users about status changes that don't take focus.
-        - Why it's important: People who do not see messages need to be informed about them.
-    
+### 4.1.3 Status Messages (Level AA)
 
+- Goal: Make users aware of important changes in content.
+- What to do: Let assistive technology notify users about status changes that don't take focus.
+- Why it's important: People who do not see messages need to be informed about them.
+    
