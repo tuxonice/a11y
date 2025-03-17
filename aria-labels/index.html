@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIA Labels Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .demo-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .custom-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .form-group {
+            margin: 1rem 0;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ARIA Labels Demo</h1>
+    <p>This page demonstrates different ways to use ARIA labels to improve accessibility.</p>
+
+    <!-- Basic aria-label Example -->
+    <section class="demo-section">
+        <h2>1. Basic aria-label</h2>
+        <p>Simple button with aria-label:</p>
+        <button class="custom-button" aria-label="Save document">
+            💾
+        </button>
+        <p><em>The button above uses aria-label to provide a clear description of its action.</em></p>
+    </section>
+
+    <!-- aria-labelledby Example -->
+    <section class="demo-section">
+        <h2>2. aria-labelledby</h2>
+        <p>Using aria-labelledby to reference existing text:</p>
+        <h3 id="region-title">Weather Forecast</h3>
+        <div role="region" aria-labelledby="region-title">
+            <p>Today's forecast: Sunny with a high of 75°F</p>
+        </div>
+        <p><em>The section above is labeled by referencing the heading's ID.</em></p>
+    </section>
+
+    <!-- aria-describedby Example -->
+    <section class="demo-section">
+        <h2>3. aria-describedby</h2>
+        <p>Form field with additional description:</p>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" aria-describedby="password-requirements">
+            <p id="password-requirements">Password must be at least 8 characters long and include numbers and special characters.</p>
+        </div>
+    </section>
+
+    <!-- Hidden Label Example -->
+    <section class="demo-section">
+        <h2>4. Visually Hidden Labels</h2>
+        <p>Search form with visually hidden label:</p>
+        <form role="search">
+            <label class="visually-hidden" for="search">Search site:</label>
+            <input type="search" id="search" placeholder="Search...">
+            <button type="submit" aria-label="Submit search">🔍</button>
+        </form>
+    </section>
+
+    <!-- Complex Example -->
+    <section class="demo-section">
+        <h2>5. Complex Labeling</h2>
+        <p>Multiple ARIA attributes working together:</p>
+        <div role="alert" aria-live="polite">
+            <button class="icon-button" 
+                    aria-label="Close notification" 
+                    aria-describedby="notification-text">
+                ✕
+            </button>
+            <p id="notification-text">Your settings have been saved successfully!</p>
+        </div>
+    </section>
+
+    <!-- Interactive Elements -->
+    <section class="demo-section">
+        <h2>6. Interactive Elements</h2>
+        <p>Custom toggle button with ARIA states:</p>
+        <button class="custom-button" 
+                role="switch" 
+                aria-checked="false" 
+                aria-label="Dark mode">
+            🌙
+        </button>
+        <script>
+            // Simple toggle functionality
+            const toggleButton = document.querySelector('[role="switch"]');
+            toggleButton.addEventListener('click', () => {
+                const isChecked = toggleButton.getAttribute('aria-checked') === 'true';
+                toggleButton.setAttribute('aria-checked', !isChecked);
+                toggleButton.textContent = isChecked ? '🌙' : '☀️';
+            });
+        </script>
+    </section>
+</body>
+</html>
