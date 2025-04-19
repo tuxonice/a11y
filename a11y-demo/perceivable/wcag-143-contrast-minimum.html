@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Contrast (Minimum) (WCAG 1.4.3)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .contrast-demo {
+            margin: 2rem 0;
+        }
+        .bad-contrast {
+            background-color: #fff;
+            color: #cccccc;
+            border: 1px solid #cccccc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .good-contrast {
+            background-color: #fff;
+            color: #212529;
+            border: 1px solid #212529;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">A11y Demo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main id="main-content" class="container my-5">
+    <h1>WCAG 1.4.3 Contrast (Minimum)</h1>
+    <p class="lead">This page demonstrates how to meet and how to fail the WCAG 2.1 criterion 1.4.3: Contrast (Minimum) (Level AA).</p>
+    <div>
+        <ul>
+            <li><b>Goal</b>: Text (and images of text) must have a contrast ratio of at least 4.5:1 against their background.</li>
+            <li><b>What to do</b>: Use sufficient color contrast for all text and important visual elements.</li>
+            <li><b>Why it's important</b>: Low contrast can make content unreadable for users with low vision or color blindness.</li>
+        </ul>
+    </div>
+    <section class="contrast-demo" aria-labelledby="bad-contrast-section">
+        <h2 id="bad-contrast-section">What to Avoid: Insufficient Contrast</h2>
+        <div class="bad-contrast">
+            This is an example of text with <strong>insufficient contrast</strong> against its background.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>Why this fails:</strong> The text color (#cccccc) does not provide enough contrast with the white background, making it hard to read for many users.
+        </div>
+    </section>
+    <section class="contrast-demo" aria-labelledby="good-contrast-section">
+        <h2 id="good-contrast-section">Example: Sufficient Contrast</h2>
+        <div class="good-contrast">
+            This is an example of text with <strong>sufficient contrast</strong> against its background.
+        </div>
+        <div class="alert alert-success" role="alert">
+            <strong>Why this works:</strong> The text color (#212529) provides a high contrast ratio with the white background, making it easily readable for everyone.
+        </div>
+    </section>
+    <section class="mt-5" aria-labelledby="best-practices">
+        <h2 id="best-practices">Best Practices Summary</h2>
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Use a contrast checker tool to verify color choices</li>
+                    <li class="list-group-item">Aim for a contrast ratio of at least 4.5:1 for normal text</li>
+                    <li class="list-group-item">For large text (18pt/24px or bold 14pt/18.66px), a ratio of 3:1 is sufficient</li>
+                    <li class="list-group-item">Test your site in grayscale or with high-contrast mode enabled</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-light py-3 mt-5">
+    <div class="container text-center">
+        <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

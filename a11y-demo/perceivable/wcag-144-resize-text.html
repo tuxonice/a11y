@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Resize Text (WCAG 1.4.4)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resize-demo {
+            margin: 2rem 0;
+        }
+        .bad-resize {
+            font-size: 1rem;
+            width: 300px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .good-resize {
+            font-size: 1rem;
+            width: 300px;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .resize-demo-controls {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">A11y Demo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main id="main-content" class="container my-5">
+    <h1>WCAG 1.4.4 Resize Text</h1>
+    <p class="lead">This page demonstrates how to meet and how to fail the WCAG 2.1 criterion 1.4.4: Resize Text (Level AA).</p>
+    <div>
+        <ul>
+            <li><b>Goal</b>: Text must be resizable up to 200% without loss of content or functionality.</li>
+            <li><b>What to do</b>: Use relative units (em, rem, %, etc.) for text and layout. Avoid fixed containers that clip or hide text.</li>
+            <li><b>Why it's important</b>: Many users need to increase text size for readability. Content should remain usable and readable at larger sizes.</li>
+        </ul>
+    </div>
+    <section class="resize-demo" aria-labelledby="bad-resize-section">
+        <h2 id="bad-resize-section">What to Avoid: Text That Can't Be Resized</h2>
+        <div class="bad-resize">
+            This text is inside a container that hides overflow and uses fixed units, so when you zoom or increase font size, some of the text may be cut off or hidden.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>Why this fails:</strong> Users who increase text size may lose access to important information if it is clipped or hidden.
+        </div>
+    </section>
+    <section class="resize-demo" aria-labelledby="good-resize-section">
+        <h2 id="good-resize-section">Example: Resizable Text</h2>
+        <div class="good-resize">
+            This text is inside a flexible container. When you zoom or increase font size, all content remains visible and usable.
+        </div>
+        <div class="alert alert-success" role="alert">
+            <strong>Why this works:</strong> The container and text use relative units and do not clip or hide content, so resizing works as expected.
+        </div>
+    </section>
+    <section class="mt-5" aria-labelledby="best-practices">
+        <h2 id="best-practices">Best Practices Summary</h2>
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Use relative units (em, rem, %, vw) for text and layout</li>
+                    <li class="list-group-item">Avoid fixed heights/widths and overflow: hidden for text containers</li>
+                    <li class="list-group-item">Test your site by zooming in or increasing browser text size up to 200%</li>
+                    <li class="list-group-item">Ensure all content and functionality remain accessible when text is resized</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-light py-3 mt-5">
+    <div class="container text-center">
+        <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

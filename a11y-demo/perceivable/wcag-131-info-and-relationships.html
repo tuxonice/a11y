@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WCAG 1.3.1 Info and Relationships Demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
   <style>
     .bad-example {
       border: 2px dashed #dc3545;
@@ -20,17 +20,35 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">A11y Demo</a>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">A11y Demo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Home</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <main class="container my-5">
-    <h1 class="mb-4">WCAG 1.3.1 Info and Relationships (Level A) Demo</h1>
-    <p class="lead">This page demonstrates correct and incorrect ways to convey information and relationships in web content, according to <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank">WCAG 2.1 Success Criterion 1.3.1</a>.</p>
-
-    <section class="mb-5">
-      <h2>1. Proper Use of Headings and Lists</h2>
+  </div>
+</nav>
+  <main id="main-content" class="container my-5">
+    <h1 class="mb-4">WCAG 1.3.1 Info and Relationships (Level A)</h1>
+    <p class="lead">This page demonstrates correct and incorrect ways to convey information and relationships in web content</p>
+    <div>
+      <ul>
+        <li><b>Goal</b>: Information about content structure is available to more people.</li>
+        <li><b>What to do</b>: Use code to reinforce relationships and information conveyed through presentation.</li>
+        <li><b>Why it's important</b>: People can adapt the presentation to suit their needs while preserving the original meaning.</li>
+      </ul>
+    </div>
+    <section class="mb-5 mt-5">
+      <h2>Proper Use of Headings and Lists</h2>
       <div class="row">
         <div class="col-md-6">
           <h3>Fruits</h3>
@@ -52,7 +70,7 @@
     </section>
 
     <section class="mb-5">
-      <h2>2. Table with Semantic Markup</h2>
+      <h2>Table with Semantic Markup</h2>
       <div class="table-responsive">
         <table class="table table-bordered align-middle" aria-label="Contact Information">
           <caption>Contact Information</caption>
@@ -80,7 +98,7 @@
     </section>
 
   <section class="mb-5">
-    <h2>3. Form Grouped with Fieldset and Legend</h2>
+    <h2>Form Grouped with Fieldset and Legend</h2>
     <form>
       <fieldset class="mb-4 p-3 border rounded">
         <legend class="col-form-label pt-0">Personal Information</legend>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Audio Control (WCAG 1.4.2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .audio-demo {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .audio-description {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">A11y Demo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main id="main-content" class="container my-5">
+    <h1>WCAG 1.4.2 Audio Control</h1>
+    <p class="lead">This page demonstrates how to meet the WCAG 2.1 criterion 1.4.2: Audio Control (Level A).</p>
+    <div>
+        <ul>
+            <li><b>Goal</b>: If audio plays automatically for more than 3 seconds, users must have a mechanism to pause, stop, or control the volume independently of the system volume.</li>
+            <li><b>What to do</b>: Provide accessible controls for any auto-playing audio.</li>
+            <li><b>Why it's important</b>: Unexpected or uncontrollable audio can interfere with screen readers and make content inaccessible.</li>
+        </ul>
+    </div>
+    <section class="audio-demo" aria-labelledby="bad-audio-section">
+        <h2 id="bad-audio-section">What to Avoid: Inaccessible Audio</h2>
+        <p class="audio-description">Below is an auto-playing audio clip <strong>without any controls</strong>. Users cannot pause, stop, or adjust the volume. This fails WCAG 1.4.2.</p>
+        <audio src="../media/sample-audio-02.mp3" autoplay loop aria-label="Demo audio: inaccessible example"></audio>
+        <div>
+            <small>Music by <a href="https://pixabay.com/users/delosound-46524562/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=321111">DELOSound</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=321111">Pixabay</a></small>
+        </div>
+        <div class="alert alert-danger mt-3" role="alert">
+            <strong>Why this fails:</strong> There is no way for users to pause, stop, or control the audio. This can interfere with screen readers and create a poor user experience.
+        </div>
+    </section>
+    <section class="audio-demo" aria-labelledby="audio-section">
+        <h2 id="audio-section">Example: Accessible Audio Control</h2>
+        <p class="audio-description">Below is an audio clip that plays automatically. Use the provided controls to pause, stop, or adjust the volume.</p>
+        <audio id="demo-audio" src="../media/sample-audio-01.mp3" loop controls aria-label="Demo audio: relaxing music">
+            Your browser does not support the audio element.
+        </audio>
+        <div>
+            <small>Music by <a href="https://pixabay.com/users/desifreemusic-28163210/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=239544">Omar Faruque</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=239544">Pixabay</a></small>
+        </div>
+
+        <div class="alert alert-success mt-3" role="alert">
+            <strong>Why this works:</strong> The audio element provides built-in controls, allowing users to pause, stop, or adjust the volume as needed.
+        </div>
+    </section>
+    <section class="mt-5" aria-labelledby="best-practices">
+        <h2 id="best-practices">Best Practices Summary</h2>
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Avoid auto-playing audio whenever possible</li>
+                    <li class="list-group-item">Always provide accessible controls for audio</li>
+                    <li class="list-group-item">Ensure controls are keyboard accessible</li>
+                    <li class="list-group-item">Test with screen readers to verify usability</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-light py-3 mt-5">
+    <div class="container text-center">
+        <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

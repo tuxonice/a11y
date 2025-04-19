@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo - Sensory Characteristics (WCAG 1.3.3)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">A11y Demo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <main id="main-content" class="container my-5">
+        <h1>WCAG 1.3.3 Sensory Characteristics (Level A)</h1>
+        <p class="lead">This page demonstrates how to provide instructions that do not rely solely on sensory characteristics such as shape, color, size, visual location, orientation, or sound.</p>
+        <ul>
+            <li><b>Goal</b>: Instructions are understandable by more people.</li>
+            <li><b>What to do</b>: Describe controls by name, not just by appearance or location.</li>
+            <li><b>Why it's important</b>: People who are blind or have low vision need non-visual instructions.</li>
+        </ul>
+
+        <section class="mb-5">
+            <h2>Correct Example: Accessible Instructions</h2>
+            <div class="p-3 border rounded bg-white mb-3">
+                <p><strong>Instruction:</strong> "Click the <strong>Submit</strong> button to continue."</p>
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+            <ul class="list-group mb-3">
+                <li class="list-group-item">Instructions reference the button's label, not its color, shape, or position.</li>
+                <li class="list-group-item">Works for all users, including those using assistive technology.</li>
+            </ul>
+        </section>
+
+        <section class="mb-5">
+            <h2>Incorrect Example: Sensory-only Instructions</h2>
+            <div class="p-3 border rounded bg-white mb-3">
+                <p><strong>Instruction:</strong> "Click the <span style='color: blue; font-weight: bold;'>blue</span> button to continue."</p>
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+            <ul class="list-group mb-3">
+                <li class="list-group-item">Relies on color alone to identify the button, which is not accessible to colorblind users or screen reader users.</li>
+                <li class="list-group-item">Users who cannot perceive color or visual location may not know which button to click.</li>
+            </ul>
+        </section>
+
+        <section class="mt-5">
+            <h2 class="h4">Key Points Demonstrated:</h2>
+            <ul class="list-group mb-4">
+                <li class="list-group-item">Instructions should not rely solely on shape, color, size, or visual location.</li>
+                <li class="list-group-item">Reference controls by their label or purpose, not by sensory characteristics.</li>
+                <li class="list-group-item">Accessible instructions work for all users, including those using assistive technology.</li>
+                <li class="list-group-item">Incorrect examples highlight why relying on sensory cues alone is a barrier.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

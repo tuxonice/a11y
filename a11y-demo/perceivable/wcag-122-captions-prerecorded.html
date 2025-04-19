@@ -5,16 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WCAG 1.2.2 Captions Demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
   <div class="container">
-    <span class="navbar-brand">A11y Captions Demo</span>
+    <a class="navbar-brand" href="../index.html">A11y Demo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Home</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
-
-<main class="container my-5">
-  <h1>Video Captions Demonstration</h1>
+<main id="main-content" class="container my-5">
+  <h1>WCAG 1.2.2  Video Captions Demonstration</h1>
   <p class="lead">This page demonstrates WCAG 2.1 Success Criterion 1.2.2 Captions (Prerecorded) Level A compliance.</p>
 
   <div>
@@ -33,9 +45,9 @@
 
           <div class="video-section my-4">
             <video controls class="img-fluid">
-              <source src="media/140111-774507949_tiny.mp4" type="video/mp4">
-              <track src="media/subtitles-en.vtt" kind="subtitles" srclang="en" label="English">
-              <track src="media/subtitles-pt.vtt" kind="subtitles" srclang="pt" label="Português">
+              <source src="../media/140111-774507949_tiny.mp4" type="video/mp4">
+              <track src="../media/subtitles-en.vtt" kind="subtitles" srclang="en" label="English">
+              <track src="../media/subtitles-pt.vtt" kind="subtitles" srclang="pt" label="Português">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -89,8 +101,8 @@
 </main>
 
 <footer class="bg-light py-3 mt-5">
-  <div class="container">
-    <p class="text-muted mb-0">Demo created to illustrate WCAG 2.1 Success Criterion 1.2.2 compliance</p>
+  <div class="container text-center">
+    <p>A11y Demo - Created to demonstrate accessibility best practices</p>
   </div>
 </footer>
 
