@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG 1.3.1 Info and Relationships Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .bad-example {
+      border: 2px dashed #dc3545;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: #fff0f3;
+    }
+    .bad-example-title {
+      font-weight: bold;
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">A11y Demo</a>
+    </div>
+  </nav>
+  <main class="container my-5">
+    <h1 class="mb-4">WCAG 1.3.1 Info and Relationships (Level A) Demo</h1>
+    <p class="lead">This page demonstrates correct and incorrect ways to convey information and relationships in web content, according to <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank">WCAG 2.1 Success Criterion 1.3.1</a>.</p>
+
+    <section class="mb-5">
+      <h2>1. Proper Use of Headings and Lists</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Fruits</h3>
+          <ul class="list-group mb-3">
+            <li class="list-group-item">Apple</li>
+            <li class="list-group-item">Banana</li>
+            <li class="list-group-item">Cherry</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h3>Vegetables</h3>
+          <ul class="list-group mb-3">
+            <li class="list-group-item">Carrot</li>
+            <li class="list-group-item">Broccoli</li>
+            <li class="list-group-item">Spinach</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2>2. Table with Semantic Markup</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle" aria-label="Contact Information">
+          <caption>Contact Information</caption>
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>alice@example.com</td>
+              <td>Manager</td>
+            </tr>
+            <tr>
+              <td>Bob</td>
+              <td>bob@example.com</td>
+              <td>Developer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  <section class="mb-5">
+    <h2>3. Form Grouped with Fieldset and Legend</h2>
+    <form>
+      <fieldset class="mb-4 p-3 border rounded">
+        <legend class="col-form-label pt-0">Personal Information</legend>
+        <div class="mb-3">
+          <label for="fname" class="form-label">First Name:</label>
+          <input type="text" id="fname" name="fname" class="form-control" autocomplete="given-name">
+        </div>
+        <div class="mb-3">
+          <label for="lname" class="form-label">Last Name:</label>
+          <input type="text" id="lname" name="lname" class="form-control" autocomplete="family-name">
+        </div>
+      </fieldset>
+      <fieldset class="mb-3 p-3 border rounded">
+        <legend class="col-form-label pt-0">Contact Preferences</legend>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="contact" value="email" id="contactEmail">
+          <label class="form-check-label" for="contactEmail">Email</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="contact" value="phone" id="contactPhone">
+          <label class="form-check-label" for="contactPhone">Phone</label>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </section>
+
+  <section class="bad-example">
+    <div class="bad-example-title mb-2">Incorrect Example: Visual Grouping Only</div>
+    <div class="p-3 mb-2 border rounded bg-light">
+      <span class="fw-bold">Personal Info</span><br>
+      <input type="text" class="form-control my-2" placeholder="First Name"><br>
+      <input type="text" class="form-control my-2" placeholder="Last Name"><br>
+    </div>
+    <p class="mt-2 text-muted">This section only uses visual cues (borders and bold text) to indicate grouping. Screen readers will not detect any relationship between the fields.</p>
+  </section>
+
+    <section class="mt-5">
+      <h2 class="h4">Key Points Demonstrated:</h2>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">Semantic HTML is used to convey structure (headings, lists, tables, forms).</li>
+        <li class="list-group-item">Relationships between content are programmatically determinable (e.g., <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> for form groups).</li>
+        <li class="list-group-item">Information is not conveyed by visual cues alone; proper markup is provided for assistive technologies.</li>
+        <li class="list-group-item">A contrasting incorrect example shows why semantics matter for accessibility.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="bg-light py-3 mt-5">
+    <div class="container text-center">
+      <p>A11y Demo - Created to demonstrate accessibility best practices</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
